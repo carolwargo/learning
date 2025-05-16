@@ -112,6 +112,8 @@ const StyledTypography = styled(Typography)({
 
 function Author({ authors }) {
   return (
+    
+    
     <Box
       sx={{
         display: 'flex',
@@ -122,6 +124,7 @@ function Author({ authors }) {
         padding: '16px',
       }}
     >
+        
       <Box
         sx={{ display: 'flex', flexDirection: 'row', gap: 1, alignItems: 'center' }}
       >
@@ -193,10 +196,11 @@ export default function MainContent() {
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
       <div className='px-3'>
         <Typography variant="h2" gutterBottom>
-          Learning
+          Explore All Learning
         </Typography>
         <Typography>Explore learning, start with a category of interest below.</Typography>
       </div>
+      
       <Box
         sx={{
           display: { xs: 'flex', sm: 'none' },
@@ -211,6 +215,7 @@ export default function MainContent() {
           <RssFeedRoundedIcon />
         </IconButton>
       </Box>
+      
       <Box
         sx={{
           display: 'flex',
@@ -284,6 +289,16 @@ export default function MainContent() {
           </IconButton>
         </Box>
       </Box>
+      <hr/>
+          <Box>
+              <div className='px-3'>
+                    <h2>Explore Featured Learning</h2>
+      <p>Explore the latest in learning.</p>
+      
+              </div>
+   
+      </Box>
+   
       <Grid container spacing={2} columns={12}>
         <Grid size={{ xs: 12, md: 6 }}>
           <SyledCard
@@ -349,6 +364,15 @@ export default function MainContent() {
             <Author authors={cardData[1].authors} />
           </SyledCard>
         </Grid>
+        </Grid>
+             <hr/>
+                <Box>
+                  <div className='px-3'>
+      <h2>Explore New Learning</h2>
+      <p>Explore newly added learning material.</p>
+              </div>
+      </Box>
+          <Grid container spacing={2} columns={12}>
         <Grid size={{ xs: 12, md: 4 }}>
           <SyledCard
             variant="outlined"
@@ -381,79 +405,38 @@ export default function MainContent() {
             <Author authors={cardData[2].authors} />
           </SyledCard>
         </Grid>
-        <Grid size={{ xs: 12, md: 4 }}>
-          <Box
-            sx={{ display: 'flex', flexDirection: 'column', gap: 2, height: '100%' }}
+   
+              <Grid size={{ xs: 12, md: 4 }}>
+          <SyledCard
+            variant="outlined"
+            onFocus={() => handleFocus(5)}
+            onBlur={handleBlur}
+            tabIndex={0}
+            className={focusedCardIndex === 5 ? 'Mui-focused' : ''}
+            sx={{ height: '100%' }}
           >
-            <SyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(3)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === 3 ? 'Mui-focused' : ''}
-              sx={{ height: '100%' }}
-            >
-              <SyledCardContent
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: '100%',
-                }}
-              >
-                <div>
-                  <Typography gutterBottom variant="caption" component="div">
-                    {cardData[3].tag}
-                  </Typography>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {cardData[3].title}
-                  </Typography>
-                  <StyledTypography
-                    variant="body2"
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {cardData[3].description}
-                  </StyledTypography>
-                </div>
-              </SyledCardContent>
-              <Author authors={cardData[3].authors} />
-            </SyledCard>
-            <SyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(4)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === 4 ? 'Mui-focused' : ''}
-              sx={{ height: '100%' }}
-            >
-              <SyledCardContent
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: '100%',
-                }}
-              >
-                <div>
-                  <Typography gutterBottom variant="caption" component="div">
-                    {cardData[4].tag}
-                  </Typography>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {cardData[4].title}
-                  </Typography>
-                  <StyledTypography
-                    variant="body2"
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {cardData[4].description}
-                  </StyledTypography>
-                </div>
-              </SyledCardContent>
-              <Author authors={cardData[4].authors} />
-            </SyledCard>
-          </Box>
+            <CardMedia
+              component="img"
+              alt="green iguana"
+              image={cardData[5].img}
+              sx={{
+                height: { sm: 'auto', md: '50%' },
+                aspectRatio: { sm: '16 / 9', md: '' },
+              }}
+            />
+            <SyledCardContent>
+              <Typography gutterBottom variant="caption" component="div">
+                {cardData[5].tag}
+              </Typography>
+              <Typography gutterBottom variant="h6" component="div">
+                {cardData[5].title}
+              </Typography>
+              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
+                {cardData[5].description}
+              </StyledTypography>
+            </SyledCardContent>
+            <Author authors={cardData[5].authors} />
+          </SyledCard>
         </Grid>
         <Grid size={{ xs: 12, md: 4 }}>
           <SyledCard

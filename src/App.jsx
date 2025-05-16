@@ -6,6 +6,7 @@ import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import CategoryPage from "./pages/CategoryPage/CategoryPage";
 
 // Lazy-loaded pages
 const LearningPage = lazy(() => import("./pages/LearningPage/LearningPage"));
@@ -19,11 +20,12 @@ const LearningPage = lazy(() => import("./pages/LearningPage/LearningPage"));
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename="/learning/">
         <ErrorBoundary>
           <Suspense fallback={<div className="text-center p-5">Loading...</div>}>
             <Routes>
               <Route path="/" element={<LearningPage />} />
+                <Route path="/category" element={<CategoryPage />} />
             </Routes>
           </Suspense>
         </ErrorBoundary>
