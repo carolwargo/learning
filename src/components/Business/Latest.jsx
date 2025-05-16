@@ -9,7 +9,11 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
-import businessLearning from '../data/businessLearning.jsx';
+import businessLearning from '../../data/businessLearning.jsx';
+
+import Button from '@mui/material/Button';
+import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 
 const StyledTypography = styled(Typography)({
   display: '-webkit-box',
@@ -56,7 +60,9 @@ const TitleTypography = styled(Typography)(({ theme }) => ({
   },
 }));
 
+
 function Author({ authors }) {
+
   return (
     <Box
       sx={{
@@ -125,11 +131,13 @@ export default function Latest() {
                 justifyContent: 'space-between',
                 gap: 1,
                 height: '100%',
+                borderBottom: '1px solid rgb(221, 221, 221)',
               }}
             >
-              <Typography gutterBottom variant="caption" component="div">
+              <Typography gutterBottom variant="caption"  component="div">
                 {article.tag}
               </Typography>
+                 <Author authors={article.authors} />
               <TitleTypography
                 gutterBottom
                 variant="h6"
@@ -148,7 +156,27 @@ export default function Latest() {
                 {article.description}
               </StyledTypography>
 
-              <Author authors={article.authors} />
+                 <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2 }}>
+                <Button
+                  variant="outlined"
+                  size="small"
+                  startIcon={<InfoRoundedIcon />}
+             
+                >
+                  Learn More
+                </Button>
+                <Button
+                  variant="contained"
+                  size="small"
+                  startIcon={<ShoppingCartRoundedIcon />}
+                
+                >
+                  Add to Cart
+                </Button>
+              </Box>
+
+              {/**HOW TO MAKE DIVIDER A BIT DARKER */}
+           <Divider/>
             </Box>
           </Grid>
         ))}

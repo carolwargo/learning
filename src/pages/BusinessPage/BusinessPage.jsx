@@ -2,10 +2,10 @@ import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import AppTheme from '../../shared-theme/AppTheme';
-import AppAppBar from '../../components/AppAppBar';
-import MainContent from '../../components/MainContent';
-import Latest from '../../components/Latest';
-import Footer from '../../components/Footer';
+import AppAppBar from '../../components/Business/AppAppBar';
+import MainContent from '../../components/Business/MainContent';
+import Latest from '../../components/Business/Latest';
+import Footer from '../../components/Business/Footer';
 import "bootstrap/dist/css/bootstrap.min.css"; 
 
 export default function LearningPage(props) {
