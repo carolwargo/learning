@@ -5,11 +5,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import CategoryPage from "./pages/CategoryPage/CategoryPage";
+import "./App.css";import BusinessPage from "./pages/BusinessPage/BusinessPage"; 
 
 // Lazy-loaded pages
 const LearningPage = lazy(() => import("./pages/LearningPage/LearningPage"));
+const BusinessPage = lazy(() => import("./pages/BusinessPage/BusinessPage"));
 
 // Lazy-loaded nested layout and subpages
 //const HomeLayout = lazy(() => import("./Layouts/HomeLayout"));
@@ -25,7 +25,7 @@ function App() {
           <Suspense fallback={<div className="text-center p-5">Loading...</div>}>
             <Routes>
               <Route path="/" element={<LearningPage />} />
-                <Route path="/category" element={<CategoryPage />} />
+                <Route path="/business" element={<BusinessPage />} />
             </Routes>
           </Suspense>
         </ErrorBoundary>
