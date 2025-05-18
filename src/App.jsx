@@ -15,17 +15,14 @@ const AnalysisReport = lazy(() => import("./pages/AnalysisReport/AnalysisReport"
 function App() {
   return (
     <div className="App">
-      <HashRouter basename="/learning/">
-        <ErrorBoundary>
-          <Suspense fallback={<div className="text-center p-5">Loading...</div>}>
-            <Routes>
-              <Route path="/" element={<LearningPage />} />
-              <Route path="/business" element={<BusinessPage />} />
-              <Route path="/analysis-report" element={<AnalysisReport />} />
-            </Routes>
-          </Suspense>
-        </ErrorBoundary>
-      </HashRouter>
+<HashRouter>
+  <Routes>
+    <Route path="/" element={<LearningPage />} />
+    <Route path="/business" element={<BusinessPage />} />
+    <Route path="/analysis-report" element={<AnalysisReport />} />
+  </Routes>
+</HashRouter>
+
     </div>
   );
 }
