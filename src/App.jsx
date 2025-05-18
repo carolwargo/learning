@@ -1,6 +1,6 @@
 // ./src/App.js
-import  { Suspense, lazy } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Suspense, lazy } from "react";
+import { HashRouter, Route, Routes } from "react-router-dom";
 
 import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import "bootstrap-icons/font/bootstrap-icons.css";
@@ -12,26 +12,20 @@ const LearningPage = lazy(() => import("./pages/LearningPage/LearningPage"));
 const BusinessPage = lazy(() => import("./pages/BusinessPage/BusinessPage")); 
 const AnalysisReport = lazy(() => import("./pages/AnalysisReport/AnalysisReport")); 
 
-// Lazy-loaded nested layout and subpages
-//const HomeLayout = lazy(() => import("./Layouts/HomeLayout"));
-//const UserHome = lazy(() => import("./pages/UserHome/UserHome"));
-//const Newsfeed = lazy(() => import("./components/Newsfeed/Newsfeed"));
-//const Explore = lazy(() => import("./components/Explore/Explore"));
-
 function App() {
   return (
     <div className="App">
-      <BrowserRouter basename="/learning/">
+      <HashRouter basename="/learning/">
         <ErrorBoundary>
           <Suspense fallback={<div className="text-center p-5">Loading...</div>}>
             <Routes>
               <Route path="/" element={<LearningPage />} />
-                <Route path="/business" element={<BusinessPage />} />
+              <Route path="/business" element={<BusinessPage />} />
               <Route path="/analysis-report" element={<AnalysisReport />} />
             </Routes>
           </Suspense>
         </ErrorBoundary>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }
