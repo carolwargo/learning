@@ -440,7 +440,7 @@ const AnalysisReport = () => {
             {/* How-to-Implement: Technical Users */}
       <section className="report-section">
         <h2 onClick={() => toggleSection('technicalHowTo')} className="section-title">
-          How-to-Implement: Technical Users {openSections.technicalHowTo ? '▼' : '▶'}
+          How-to-Implement: For Technical Users {openSections.technicalHowTo ? '▼' : '▶'}
         </h2>
         {openSections.technicalHowTo && (
           <div>
@@ -543,7 +543,7 @@ const AnalysisReport = () => {
       {/* How-to-Implement: Non-Technical Users */}
       <section className="report-section">
         <h2 onClick={() => toggleSection('nonTechnicalHowTo')} className="section-title">
-          How-to-Implement: Non-Technical Users {openSections.nonTechnicalHowTo ? '▼' : '▶'}
+          How-to-Implement: For Non-Technical Users {openSections.nonTechnicalHowTo ? '▼' : '▶'}
         </h2>
         {openSections.nonTechnicalHowTo && (
           <div>

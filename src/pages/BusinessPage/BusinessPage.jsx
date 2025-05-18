@@ -3,7 +3,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import AppTheme from '../../shared-theme/AppTheme';
 import AppAppBar from '../../components/Learning/AppAppBar';
-import LearningContent from '../../components/Learning/MainContent';
+import BusinessContent from '../../components/Learning/BusinessContent';
 import Latest from '../../components/Learning/Latest';
 import Footer from '../../components/Learning/Footer';
 import "bootstrap/dist/css/bootstrap.min.css"; 
@@ -18,7 +18,7 @@ export default function LearningPage(props) {
         component="main"
         sx={{ display: 'flex', flexDirection: 'column', my: 16, gap: 4 }}
       >
-        <MainContent />
+        <BusinessContent />
         <Latest />
         <Footer />
       </Container>
