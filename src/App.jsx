@@ -10,6 +10,7 @@ import "./App.css";
 // Lazy-loaded pages
 const LearningPage = lazy(() => import("./pages/LearningPage/LearningPage"));
 const BusinessPage = lazy(() => import("./pages/BusinessPage/BusinessPage")); 
+const AnalysisReport = lazy(() => import("./pages/AnalysisReport/AnalysisReport")); 
 
 // Lazy-loaded nested layout and subpages
 //const HomeLayout = lazy(() => import("./Layouts/HomeLayout"));
@@ -26,6 +27,7 @@ function App() {
             <Routes>
               <Route path="/" element={<LearningPage />} />
                 <Route path="/business" element={<BusinessPage />} />
+              <Route path="/analysis-report" element={<AnalysisReport />} />
             </Routes>
           </Suspense>
         </ErrorBoundary>

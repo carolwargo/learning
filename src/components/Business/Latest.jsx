@@ -156,7 +156,7 @@ export default function Latest() {
                 {article.description}
               </StyledTypography>
 
-                 <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2 }}>
+                 <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2, mb: 1 }}>
                 <Button
                   variant="outlined"
                   size="small"

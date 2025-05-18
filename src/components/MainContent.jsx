@@ -284,6 +284,7 @@ export default function MainContent() {
           </IconButton>
         </Box>
       </Box>
+      
       <Grid container spacing={2} columns={12}>
         <Grid size={{ xs: 12, md: 6 }}>
           <SyledCard

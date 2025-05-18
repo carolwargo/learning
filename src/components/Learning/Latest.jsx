@@ -3,17 +3,46 @@ import PropTypes from 'prop-types';
 import Avatar from '@mui/material/Avatar';
 import AvatarGroup from '@mui/material/AvatarGroup';
 import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import Pagination from '@mui/material/Pagination';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
+import Rating from '@mui/material/Rating';
 import { styled } from '@mui/material/styles';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
-import businessLearning from '../data/businessLearning.jsx';
-
 import Button from '@mui/material/Button';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
+import businessLearning from '../../data/businessLearning.jsx'; // Line 17: Default import
+
+// Styled Components (from LearningContent.jsx)
+const SyledCard = styled(Card)(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'column',
+  padding: 0,
+  height: '100%',
+  boxShadow: '2px 4px 4px 0px rgba(0,0,0,0.5)', // Matches LearningContent.jsx
+  backgroundColor: (theme.vars || theme).palette.background.paper,
+  '&:hover': {
+    backgroundColor: 'transparent',
+    cursor: 'pointer',
+  },
+  '&:focus-visible': {
+    outline: '3px solid',
+    outlineColor: 'hsla(210, 98%, 48%, 0.5)',
+    outlineOffset: '2px',
+  },
+}));
+
+const SyledCardContent = styled(CardContent)({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 2,
+  padding: 16,
+  flexGrow: 1,
+});
 
 const StyledTypography = styled(Typography)({
   display: '-webkit-box',
@@ -23,7 +52,8 @@ const StyledTypography = styled(Typography)({
   textOverflow: 'ellipsis',
 });
 
-const TitleTypography = styled(Typography)(({ theme }) => ({
+// Line 53: TitleTypography with unused theme parameter removed
+const TitleTypography = styled(Typography)(() => ({
   position: 'relative',
   textDecoration: 'none',
   '&:hover': { cursor: 'pointer' },
@@ -44,25 +74,9 @@ const TitleTypography = styled(Typography)(({ theme }) => ({
     outlineOffset: '3px',
     borderRadius: '8px',
   },
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    width: 0,
-    height: '1px',
-    bottom: 0,
-    left: 0,
-    backgroundColor: (theme.vars || theme).palette.text.primary,
-    opacity: 0.3,
-    transition: 'width 0.3s ease, opacity 0.3s ease',
-  },
-  '&:hover::before': {
-    width: '100%',
-  },
 }));
 
-
 function Author({ authors }) {
-
   return (
     <Box
       sx={{
@@ -71,11 +85,11 @@ function Author({ authors }) {
         gap: 2,
         alignItems: 'center',
         justifyContent: 'space-between',
+        px: 2,
+        mt: 3,
       }}
     >
-      <Box
-        sx={{ display: 'flex', flexDirection: 'row', gap: 1, alignItems: 'center' }}
-      >
+      <Box sx={{ display: 'flex', flexDirection: 'row', gap: 1, alignItems: 'center' }}>
         <AvatarGroup max={3}>
           {authors.map((author, index) => (
             <Avatar
@@ -107,13 +121,13 @@ Author.propTypes = {
 export default function Latest() {
   const [focusedCardIndex, setFocusedCardIndex] = React.useState(null);
 
-  const handleFocus = (index) => {
-    setFocusedCardIndex(index);
-  };
+  const handleFocus = (index) => setFocusedCardIndex(index);
+  const handleBlur = () => setFocusedCardIndex(null);
+  const handleAddToCart = (title) => console.info(`Added "${title}" to cart`);
+  const handleLearnMore = (title) => console.info(`Clicked Learn More for "${title}"`);
 
-  const handleBlur = () => {
-    setFocusedCardIndex(null);
-  };
+  // Line 92: Debug log to confirm data
+  console.log('businessLearning:', businessLearning);
 
   return (
     <div>
@@ -121,47 +135,56 @@ export default function Latest() {
       <Typography variant="h2" gutterBottom>
         Latest
       </Typography>
-      <Grid container spacing={8} columns={12} sx={{ my: 4 }}>
+      {/* Line 99: Grid container with card-based layout */}
+      <Grid container spacing={2} columns={12} sx={{ my: 4 }}>
         {businessLearning.map((article, index) => (
           <Grid key={index} size={{ xs: 12, sm: 6 }}>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                gap: 1,
-                height: '100%',
-                borderBottom: '1px solid rgb(221, 221, 221)',
-              }}
+            {/* Line 102: SyledCard for card-based design */}
+            <SyledCard
+              variant="outlined"
+              onFocus={() => handleFocus(index)}
+              onBlur={handleBlur}
+              tabIndex={0}
+              className={focusedCardIndex === index ? 'Mui-focused' : ''}
             >
-              <Typography gutterBottom variant="caption"  component="div">
-                {article.tag}
-              </Typography>
-                 <Author authors={article.authors} />
-              <TitleTypography
-                gutterBottom
-                variant="h6"
-                onFocus={() => handleFocus(index)}
-                onBlur={handleBlur}
-                tabIndex={0}
-                className={focusedCardIndex === index ? 'Mui-focused' : ''}
-              >
-                {article.title}
-                <NavigateNextRoundedIcon
-                  className="arrow"
-                  sx={{ fontSize: '1rem' }}
+              <Author authors={article.authors} />
+              <SyledCardContent>
+                {/* Line 110: Tag as caption */}
+                <Typography gutterBottom variant="caption" component="div">
+                  {article.tag}
+                </Typography>
+                {/* Line 113: Title with arrow */}
+                <TitleTypography gutterBottom variant="h6" component="div">
+                  {article.title}
+                  <NavigateNextRoundedIcon className="arrow" sx={{ fontSize: '1rem' }} />
+                </TitleTypography>
+                <StyledTypography variant="body2" color="text.secondary">
+                  {article.description}
+                </StyledTypography>
+                {/* Line 119: Rating */}
+                <Rating
+                  name={`rating-${index}`}
+                  value={article.rating}
+                  precision={0.5}
+                  readOnly
+                  size="small"
+                  sx={{
+                    color: 'brand.500',
+                    '& .MuiRating-iconEmpty': {
+                      color: 'gray.300',
+                    },
+                    '--filled-color': 'brand.500' in window ? 'brand.500' : '#1976d2',
+                    '--empty-color': 'gray.300' in window ? 'gray.300' : '#bdbdbd',
+                  }}
                 />
-              </TitleTypography>
-              <StyledTypography variant="body2" color="text.secondary" gutterBottom>
-                {article.description}
-              </StyledTypography>
-
-                 <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2 }}>
+              </SyledCardContent>
+              {/* Line 133: Buttons */}
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2, mb: 1 }}>
                 <Button
                   variant="outlined"
                   size="small"
                   startIcon={<InfoRoundedIcon />}
-             
+                  onClick={() => handleLearnMore(article.title)}
                 >
                   Learn More
                 </Button>
@@ -169,19 +192,16 @@ export default function Latest() {
                   variant="contained"
                   size="small"
                   startIcon={<ShoppingCartRoundedIcon />}
-                
+                  onClick={() => handleAddToCart(article.title)}
                 >
                   Add to Cart
                 </Button>
               </Box>
-
-              {/**HOW TO MAKE DIVIDER A BIT DARKER */}
-           <Divider/>
-            </Box>
+            </SyledCard>
           </Grid>
         ))}
       </Grid>
-      <Box sx={{ display: 'flex', flexDirection: 'row', pt: 1 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'row', pt: 3}}>    
         <Pagination count={9} boundaryCount={9} />
       </Box>
     </div>

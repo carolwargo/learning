@@ -1,3 +1,4 @@
+//src/data/businessLearning.jsx
 const businessLearning = [
   {
     tag: 'Startup',
@@ -8,6 +9,7 @@ const businessLearning = [
       { name: 'Remy Sharp', avatar: '/static/images/avatar/1.jpg' },
       { name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' },
     ],
+    rating: 4.5,
   },
   {
     tag: 'Marketing',
@@ -15,6 +17,7 @@ const businessLearning = [
     description:
       'Discover how to grow your client base with powerful content strategies, hashtags, reels, and paid ads tailored for beauty brands.',
     authors: [{ name: 'Erica Johns', avatar: '/static/images/avatar/6.jpg' }],
+    rating: 4.7 // Added rating
   },
   {
     tag: 'Branding',
@@ -22,6 +25,7 @@ const businessLearning = [
     description:
       'This workshop will teach you how to define your brand identity, choose the right colors and fonts, and design a logo that captures your style.',
     authors: [{ name: 'Kate Morrison', avatar: '/static/images/avatar/7.jpg' }],
+    rating: 4.3 // Added rating
   },
   {
     tag: 'Growth',
@@ -29,6 +33,7 @@ const businessLearning = [
     description:
       'Ready to grow beyond the chair? Learn how to expand your team, open a second location, or launch a product line.',
     authors: [{ name: 'Cindy Baker', avatar: '/static/images/avatar/3.jpg' }],
+    rating: 4.6 // Added rating
   },
   {
     tag: 'Finance',
@@ -39,6 +44,7 @@ const businessLearning = [
       { name: 'Agnes Walker', avatar: '/static/images/avatar/4.jpg' },
       { name: 'Trevor Henderson', avatar: '/static/images/avatar/5.jpg' },
     ],
+    rating: 4.2 // Added rating
   },
   {
     tag: 'Technology',
@@ -46,6 +52,7 @@ const businessLearning = [
     description:
       'Learn how to use AI tools for scheduling, email marketing, chatbots, and personalized beauty recommendations to save time and impress clients.',
     authors: [{ name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' }],
+    rating: 4.8 // Added rating
   },
   {
     tag: 'Sustainability',
@@ -56,6 +63,7 @@ const businessLearning = [
       { name: 'Agnes Walker', avatar: '/static/images/avatar/4.jpg' },
       { name: 'Trevor Henderson', avatar: '/static/images/avatar/5.jpg' },
     ],
+    rating: 4.4 // Added rating
   },
   {
     tag: 'Efficiency',
@@ -63,6 +71,7 @@ const businessLearning = [
     description:
       'Maximize your time with tools for booking, reminders, inventory, and client follow-up—perfect for those running a one-person show.',
     authors: [{ name: 'Travis Howard', avatar: '/static/images/avatar/2.jpg' }],
+    rating: 4.1 // Added rating
   },
   {
     tag: 'Trends',
@@ -70,6 +79,7 @@ const businessLearning = [
     description:
       'Stay ahead of the curve with insights on what clients want, new service trends, digital tools, and how to adapt your offerings.',
     authors: [{ name: 'Kate Morrison', avatar: '/static/images/avatar/7.jpg' }],
+    rating: 4.0 // Added rating
   },
   {
     tag: 'Success Stories',
@@ -77,6 +87,7 @@ const businessLearning = [
     description:
       'Hear from successful beauty pros about their path from startup to sustainability—plus tips you can apply to your own journey.',
     authors: [{ name: 'Cindy Baker', avatar: '/static/images/avatar/3.jpg' }],
+    rating: 4.6 // Added rating
   },
 ];
 
