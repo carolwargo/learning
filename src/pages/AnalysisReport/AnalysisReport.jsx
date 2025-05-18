@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import './AnalysisReport.css';
 
 const AnalysisReport = () => {
-  // State for collapsible sections
+  // State for collapsible sections, all set to false to start closed
   const [openSections, setOpenSections] = useState({
-    executiveSummary: true,
+    executiveSummary: false,
     background: false,
     evaluation: false,
     costComparison: false,
@@ -26,10 +26,8 @@ const AnalysisReport = () => {
   return (
     <div className="report-container">
       <header className="report-header">
-        <h1>Bi-Weekly Team Report Process: Solution Options and Recommendations</h1>
-        <p><strong>Prepared by:</strong> Carol Wargo</p>
-        <p><strong>Date:</strong> May 18, 2025</p>
-        <p><strong>To:</strong> USO</p>
+        <h1 >USO Bi-Weekly Team Report Process:</h1>
+          <p ><strong>Solution Options and Recommendations</strong></p>
       </header>
 
       {/* Executive Summary */}
@@ -39,7 +37,9 @@ const AnalysisReport = () => {
         </h2>
         {openSections.executiveSummary && (
           <p>
-            To optimize the bi-weekly team reporting process, I evaluated five solution options, including a recommended Google Forms-based approach and four alternatives: a custom application, third-party survey tools, Microsoft Forms with Power Automate, and a manual process with automation. Each option was assessed based on cost, efficiency, scalability, setup time, usability, and automation potential to ensure alignment with USO’s operational needs and budget. The Google Forms solution is recommended for its low cost, rapid deployment, and robust automation, offering immediate efficiency while supporting future growth. This report details each option, provides cost and timeframe analyses, outlines implementation steps for technical and non-technical users, and proposes a strategic plan for transitioning to an app-based system for long-term scalability.
+To streamline USO’s bi-weekly reporting, I evaluated five solutions, recommending Google Forms for its low cost, quick setup, and strong automation. Alternatives include a custom app, third-party tools, Microsoft Forms, and a manual process. Assessed on cost, efficiency, scalability, and usability, Google Forms ensures immediate efficiency and future growth. This report details options, costs, implementation steps, and a plan for a scalable app-based system.
+
+
           </p>
         )}
       </section>
@@ -380,8 +380,6 @@ const AnalysisReport = () => {
         )}
       </section>
 
-
-
       {/* Future Development */}
       <section className="report-section">
         <h2 onClick={() => toggleSection('futureDevelopment')} className="section-title">
@@ -431,13 +429,16 @@ const AnalysisReport = () => {
           </p>
         )}
       </section>
-      <div className=' report-divider'></div>
-            <header className="report-header">
-        <h1>How-to-Implement</h1>
-        <p><strong> Technical & Non-Technical Users</strong></p>
-  
-      </header>
-            {/* How-to-Implement: Technical Users */}
+
+      <div className="report-divider">
+     
+        <header className="report-header">
+          <h1>How-to-Implement</h1>
+          <p><strong>For Technical & Non-Technical Users</strong></p>
+        </header>
+      </div>
+
+      {/* How-to-Implement: Technical Users */}
       <section className="report-section">
         <h2 onClick={() => toggleSection('technicalHowTo')} className="section-title">
           How-to-Implement: For Technical Users {openSections.technicalHowTo ? '▼' : '▶'}
@@ -449,16 +450,16 @@ const AnalysisReport = () => {
             <ul>
               <li>Access <a href="https://forms.google.com">forms.google.com</a> with your USO Google Workspace account.</li>
               <li>Create a new form (click + Blank).</li>
-              <li>Configure settings: Enable “Collect email addresses” and “Require sign-in” under Settings &gt; Responses and General.</li>
+              <li>Configure settings: Enable “Collect email addresses” and “Require sign-in” under Settings {'>'} Responses and General.</li>
               <li>Set title: “USO Bi-Weekly Team Report” and description: “Submit by every other Friday. Contact Carol Wargo.”</li>
               <li>Add 10 questions with appropriate types (e.g., Short answer for Date, Paragraph for New Leads, Linear scale for Morale Score). Ensure all are required.</li>
-              <li>Link to a Google Sheet named “USO Bi-Weekly Report Responses” (Responses tab &gt; Sheets icon).</li>
+              <li>Link to a Google Sheet named “USO Bi-Weekly Report Responses” (Responses tab {'>'} Sheets icon).</li>
               <li>Share the form link with the team via email or USO intranet.</li>
             </ul>
             <p><strong>Time:</strong> 1–2 hours</p>
             <h3>2. Configure Google Sheet</h3>
             <ul>
-              <li>Open the linked sheet and freeze the header row (View &gt; Freeze &gt; 1 row).</li>
+              <li>Open the linked sheet and freeze the header row (View {'>'} Freeze {'>'} 1 row).</li>
               <li>Add a “User ID” column (B) with formula: <code>=LEFT(A2,FIND("@",A2)-1)</code> to extract usernames from emails.</li>
               <li>Optionally, create a “Structured Data” tab with columns: Response ID, User ID, Date, Question ID, Question Text, Answer.</li>
               <li>Secure the sheet: Share only with authorized USO members (Editor for admins, Viewer for others).</li>
@@ -466,7 +467,7 @@ const AnalysisReport = () => {
             <p><strong>Time:</strong> 1–2 hours</p>
             <h3>3. Automate with Google Apps Script</h3>
             <ul>
-              <li>In the sheet, go to Extensions &gt; Apps Script and name the project “USO Report Automation”.</li>
+              <li>In the sheet, go to Extensions{'>'}Apps Script and name the project “USO Report Automation”.</li>
               <li>Paste the following script to deduplicate answers and generate reports:</li>
             </ul>
             <pre className="code-block">
@@ -493,7 +494,7 @@ const AnalysisReport = () => {
         } else if (["New Opportunities", "Closed Opportunities", "New Activations Confirmed"].includes(questions[j])) {
           answer.split(",").forEach(item => item.trim() && report[questions[j]].add(item.trim()));
         } else {
-          answer && report[questions[j]].add(answer);
+          answer && report[question].add(answer);
         }
       }
     }
@@ -517,7 +518,7 @@ const AnalysisReport = () => {
             </pre>
             <ul>
               <li>Update the email address and sheet name as needed.</li>
-              <li>Set a trigger (Triggers &gt; Add Trigger) to run bi-weekly (e.g., every other Monday at 9 AM).</li>
+              <li>Set a trigger (Triggers{'>'}Add Trigger) to run bi-weekly (e.g., every other Monday at 9 AM).</li>
               <li>Test by submitting form responses and running the script manually.</li>
             </ul>
             <p><strong>Time:</strong> 2–3 hours</p>
@@ -527,7 +528,7 @@ const AnalysisReport = () => {
               <li>Connect to the “USO Bi-Weekly Report Responses” sheet.</li>
               <li>Add a title, date range control, table (showing Timestamp, Email, etc.), and charts (e.g., Line chart for Morale Score).</li>
               <li>Customize with USO branding (navy blue, logo).</li>
-              <li>Share with authorized team members (Share &gt; Add people).</li>
+              <li>Share with authorized team members (Share{'>'}Add people).</li>
             </ul>
             <p><strong>Time:</strong> 2–3 hours</p>
             <h3>5. Test and Train</h3>
@@ -540,6 +541,7 @@ const AnalysisReport = () => {
           </div>
         )}
       </section>
+
       {/* How-to-Implement: Non-Technical Users */}
       <section className="report-section">
         <h2 onClick={() => toggleSection('nonTechnicalHowTo')} className="section-title">
@@ -555,17 +557,17 @@ const AnalysisReport = () => {
               <li>In Settings, check “Collect email addresses” and “Require sign-in” to limit to USO team.</li>
               <li>Name it “USO Bi-Weekly Team Report” and add a description: “Submit by Friday every two weeks.”</li>
               <li>Add 10 questions (e.g., Short answer for Date, Paragraph for New Leads, Linear scale for Morale Score). Mark all as required.</li>
-              <li>Save answers to a spreadsheet named “USO Bi-Weekly Report Responses” (Responses &gt; Sheets icon).</li>
+              <li>Save answers to a spreadsheet named “USO Bi-Weekly Report Responses” (Responses{'>'}Sheets icon).</li>
               <li>Email the form link to your team with submission instructions.</li>
             </ul>
             <p><strong>Time:</strong> 1–2 hours</p>
             <h3>2. Set Up Google Sheet</h3>
             <ul>
               <li>Open the spreadsheet in Google Drive.</li>
-              <li>Fix the top row (View &gt; Freeze &gt; 1 row).</li>
+              <li>Fix the top row (View {'>'} Freeze {'>'} 1 row).</li>
               <li>Add a “User ID” column (B) with formula: <code>=LEFT(A2,FIND("@",A2)-1)</code> and drag down.</li>
-              <li>Ensure dates look right (Format &gt; Number &gt; Date).</li>
-              <li>Share only with yourself and USO admins (Share &gt; Viewer for others).</li>
+              <li>Ensure dates look right (Format {'>'} Number {'>'} Date).</li>
+              <li>Share only with yourself and USO admins (Share {'>'} Viewer for others).</li>
             </ul>
             <p><strong>Time:</strong> 1–2 hours</p>
             <h3>3. Automate Reports</h3>
@@ -595,10 +597,10 @@ const AnalysisReport = () => {
           </div>
         )}
       </section>
-<footer className="report-footer">
-        <p><strong>Powered by: </strong> Carol Wargo  <span></span></p>
-      
-        <a href=' telto='>443-771-1726</a>
+
+      <footer className="report-footer">
+        <p><strong>Powered by:</strong> Carol Wargo</p>
+        <a href="tel:+14437711726">443-771-1726</a>
       </footer>
     </div>
   );
