@@ -38,8 +38,6 @@ const AnalysisReport = () => {
         {openSections.executiveSummary && (
           <p>
 To streamline USO’s bi-weekly reporting, I evaluated five solutions, recommending Google Forms for its low cost, quick setup, and strong automation. Alternatives include a custom app, third-party tools, Microsoft Forms, and a manual process. Assessed on cost, efficiency, scalability, and usability, Google Forms ensures immediate efficiency and future growth. This report details options, costs, implementation steps, and a plan for a scalable app-based system.
-
-
           </p>
         )}
       </section>
