@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './AnalysisReport.css';
+import '../../pages/AnalysisReport/AnalysisReport.css'; // Import your CSS file for styling
 
 const AnalysisReport = () => {
   // State for collapsible sections, all set to false to start closed
@@ -24,11 +24,6 @@ const AnalysisReport = () => {
   };
 
   return (
-    <div className='p-3'>
-
-
-            <h1 className='text-center pt-4 fw-bold'
-            style={{color:'#003087', fontSize:'2.6rem', textShadow:' 1px 1px 5px'}}>Problem Solving with A.I.</h1>
     <div className="report-container">
       <header className="report-header">
         <h1 >USO Bi-Weekly Team Report Process:</h1>
@@ -600,11 +595,10 @@ To streamline USO’s bi-weekly reporting, I evaluated five solutions, recommend
           </div>
         )}
       </section>
-    </div>
-       <footer className="report-footer pb-5 text-white"
-       style={{ backgroundColor: '#002147' }}>
+
+      <footer className="report-footer">
         <p><strong>Powered by:</strong> Carol Wargo</p>
-        <a className='mb-5' href="tel:+14437711726">443-771-1726</a>
+        <a href="tel:+14437711726">443-771-1726</a>
       </footer>
     </div>
   );
