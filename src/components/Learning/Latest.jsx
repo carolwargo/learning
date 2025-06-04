@@ -15,7 +15,7 @@ import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
 import Button from '@mui/material/Button';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
-import businessLearning from '../../data/HRPractices.jsx'; // Line 17: Default import
+import businessCardData from '../../data/businessCardData.jsx'; // Line 17: Default import
 
 // Styled Components (from LearningContent.jsx)
 const SyledCard = styled(Card)(({ theme }) => ({
@@ -127,7 +127,7 @@ export default function Latest() {
   const handleLearnMore = (title) => console.info(`Clicked Learn More for "${title}"`);
 
   // Line 92: Debug log to confirm data
-  console.log('businessLearning:', businessLearning);
+  console.log('businessCardData:', businessCardData);
 
   return (
     <div>
@@ -137,7 +137,7 @@ export default function Latest() {
       </Typography>
       {/* Line 99: Grid container with card-based layout */}
       <Grid container spacing={2} columns={12} sx={{ my: 4 }}>
-        {businessLearning.map((article, index) => (
+        {businessCardData.map((article, index) => (
           <Grid key={index} size={{ xs: 12, sm: 6 }}>
             {/* Line 102: SyledCard for card-based design */}
             <SyledCard

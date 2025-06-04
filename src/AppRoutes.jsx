@@ -3,7 +3,7 @@ import { Suspense, lazy } from "react";
 import BottomAppBar from "./components/Nav/BottomAppBar";
 
 const LearningPage = lazy(() => import("./pages/LearningPage/LearningPage"));
-const BusinessPage = lazy(() => import("./pages/HRPage/HRPage"));
+const HumanResourcesPage = lazy(() => import("./pages/HumanResourcesPage/HumanResourcesPage"));
 const AnalysisReport = lazy(() => import("./pages/AnalysisReport/AnalysisReport"));
 
 function AppRoutes() {
@@ -15,7 +15,7 @@ function AppRoutes() {
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route path="/" element={<LearningPage />} />
-          <Route path="/business" element={<BusinessPage />} />
+          <Route path="/hr" element={<HumanResourcesPage />} />
           <Route path="/analysis-report" element={<AnalysisReport />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

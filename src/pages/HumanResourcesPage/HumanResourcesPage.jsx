@@ -1,10 +1,10 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import AppTheme from '../../shared-theme/AppTheme';
-import AppAppBar from '../../components/HR/AppAppBar';
-import BusinessContent from '../../components/HR/HRContent';
-import Latest from '../../components/HR/Latest';
-import Footer from '../../components/HR/Footer';
+import AppAppBar from '../../components/Business/AppAppBar';
+import BusinessContent from '../../components/Business/HumanResourcesContent';
+import Latest from '../../components/Business/Latest';
+import Footer from '../../components/Business/Footer';
 import "bootstrap/dist/css/bootstrap.min.css"; 
 
 export default function HRPage(props) {
