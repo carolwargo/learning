@@ -15,7 +15,7 @@ import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
 import Button from '@mui/material/Button';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
-import businessLearning from '../../data/businessLearning.jsx'; // Line 17: Default import
+import businessLearning from '../../data/HRPractices.jsx'; // Line 17: Default import
 
 // Styled Components (from LearningContent.jsx)
 const SyledCard = styled(Card)(({ theme }) => ({

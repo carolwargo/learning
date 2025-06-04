@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
-import businessLearning from '../../data/businessLearning.jsx';
+import businessLearning from '../../data/HRPractices.jsx';
 
 import Button from '@mui/material/Button';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';

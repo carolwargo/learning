@@ -12,8 +12,9 @@ export default function LearningPage(props) {
   return (
     
     <AppTheme {...props}>
+       <AppAppBar />
       <CssBaseline enableColorScheme />
-      <AppAppBar />
+     
       <Container
         maxWidth="lg"
         component="main"
