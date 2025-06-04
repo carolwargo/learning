@@ -1,127 +1,17 @@
-// src/components/HumanResources/HumanResourcesContent.jsx
+// src/components/MainContent.jsx
 import * as React from 'react';
-import PropTypes from 'prop-types';
-import Avatar from '@mui/material/Avatar';
-import AvatarGroup from '@mui/material/AvatarGroup';
-import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Chip from '@mui/material/Chip';
-import Grid from '@mui/material/Grid';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import FormControl from '@mui/material/FormControl';
-import InputAdornment from '@mui/material/InputAdornment';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import { styled } from '@mui/material/styles';
-import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import { Box, Chip, Grid, Typography, IconButton, Button } from '@mui/material';
 import RssFeedRoundedIcon from '@mui/icons-material/RssFeedRounded';
-import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
-import cardData from '../../data/cardData';
+import SyledCard from './SyledCard'; // Adjust import path
+import SyledCardContent from './SyledCardContent'; // Adjust import path
+import StyledTypography from './StyledTypography'; // Adjust import path
+import CardMedia from './CardMedia'; // Adjust import path
+import Author from './Author'; // Adjust import path
+import Search from './Search'; // Adjust import path
+import cardData from '../data/cardData'; // Adjust import path
 
-const SyledCard = styled(Card)(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  padding: 0,
-  height: '100%',
-  backgroundColor: (theme.vars || theme).palette.background.paper,
-  '&:hover': {
-    backgroundColor: 'transparent',
-    cursor: 'pointer',
-  },
-  '&:focus-visible': {
-    outline: '3px solid',
-    outlineColor: 'hsla(210, 98%, 48%, 0.5)',
-    outlineOffset: '2px',
-  },
-}));
-
-const SyledCardContent = styled(CardContent)({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 4,
-  padding: 16,
-  flexGrow: 1,
-  '&:last-child': {
-    paddingBottom: 16,
-  },
-});
-
-const StyledTypography = styled(Typography)({
-  display: '-webkit-box',
-  WebkitBoxOrient: 'vertical',
-  WebkitLineClamp: 2,
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-});
-
-function Author({ authors }) {
-  return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'row',
-        gap: 2,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '16px',
-      }}
-    >
-      <Box
-        sx={{ display: 'flex', flexDirection: 'row', gap: 1, alignItems: 'center' }}
-      >
-        <AvatarGroup max={3}>
-          {authors.map((author, index) => (
-            <Avatar
-              key={index}
-              alt={author.name}
-              src={author.avatar}
-              sx={{ width: 24, height: 24 }}
-            />
-          ))}
-        </AvatarGroup>
-        <Typography variant="caption">
-          {authors.map((author) => author.name).join(', ')}
-        </Typography>
-      </Box>
-      <Typography variant="caption">July 14, 2021</Typography>
-    </Box>
-  );
-}
-
-Author.propTypes = {
-  authors: PropTypes.arrayOf(
-    PropTypes.shape({
-      avatar: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-    }),
-  ).isRequired,
-};
-
-export function Search({ id = 'search' }) {
-  return (
-    <FormControl sx={{ width: { xs: '100%', md: '25ch' } }} variant="outlined">
-      <OutlinedInput
-        size="small"
-        id={id}
-        placeholder="Search…"
-        sx={{ flexGrow: 1 }}
-        startAdornment={
-          <InputAdornment position="start" sx={{ color: 'text.primary' }}>
-            <SearchRoundedIcon fontSize="small" />
-          </InputAdornment>
-        }
-        inputProps={{
-          'aria-label': 'search',
-        }}
-      />
-    </FormControl>
-  );
-}
-
-export default function HumanResourcesContent() {
+export default function MainContent() {
   const [focusedCardIndex, setFocusedCardIndex] = React.useState(null);
   const [selectedCategory, setSelectedCategory] = React.useState('All categories');
 
@@ -138,6 +28,7 @@ export default function HumanResourcesContent() {
     console.info(`Filter chip clicked: ${category}`);
   };
 
+  // Filter cards based on selected category
   const filteredCards = selectedCategory === 'All categories'
     ? cardData
     : cardData.filter((card) => card.tag === selectedCategory);
@@ -148,7 +39,9 @@ export default function HumanResourcesContent() {
         <Typography variant="h2" gutterBottom>
           Human Resources Tools
         </Typography>
-        <Typography>Explore available resource articles by selecting a category of interest below to filter.</Typography>
+        <Typography>
+          Explore available resource articles by selecting a category of interest below to filter.
+        </Typography>
       </div>
       <Box
         sx={{
@@ -195,40 +88,40 @@ export default function HumanResourcesContent() {
             sx={{ fontWeight: selectedCategory === 'All categories' ? 'bold' : 'normal' }}
           />
           <Chip
-            label="Engineering"
+            label="Business"
             size="medium"
-            onClick={handleChipClick('Engineering')}
-            variant={selectedCategory === 'Engineering' ? 'filled' : 'outlined'}
-            color={selectedCategory === 'Engineering' ? 'primary' : 'default'}
-            aria-pressed={selectedCategory === 'Engineering'}
-            sx={{ fontWeight: selectedCategory === 'Engineering' ? 'bold' : 'normal' }}
+            onClick={handleChipClick('Business')}
+            variant={selectedCategory === 'Business' ? 'filled' : 'outlined'}
+            color={selectedCategory === 'Business' ? 'primary' : 'default'}
+            aria-pressed={selectedCategory === 'Business'}
+            sx={{ fontWeight: selectedCategory === 'Business' ? 'bold' : 'normal' }}
           />
           <Chip
-            label="Product"
+            label="Certification"
             size="medium"
-            onClick={handleChipClick('Product')}
-            variant={selectedCategory === 'Product' ? 'filled' : 'outlined'}
-            color={selectedCategory === 'Product' ? 'primary' : 'default'}
-            aria-pressed={selectedCategory === 'Product'}
-            sx={{ fontWeight: selectedCategory === 'Product' ? 'bold' : 'normal' }}
+            onClick={handleChipClick('Certification')}
+            variant={selectedCategory === 'Certification' ? 'filled' : 'outlined'}
+            color={selectedCategory === 'Certification' ? 'primary' : 'default'}
+            aria-pressed={selectedCategory === 'Certification'}
+            sx={{ fontWeight: selectedCategory === 'Certification' ? 'bold' : 'normal' }}
           />
           <Chip
-            label="Design"
+            label="Enrichment"
             size="medium"
-            onClick={handleChipClick('Design')}
-            variant={selectedCategory === 'Design' ? 'filled' : 'outlined'}
-            color={selectedCategory === 'Design' ? 'primary' : 'default'}
-            aria-pressed={selectedCategory === 'Design'}
-            sx={{ fontWeight: selectedCategory === 'Design' ? 'bold' : 'normal' }}
+            onClick={handleChipClick('Enrichment')}
+            variant={selectedCategory === 'Enrichment' ? 'filled' : 'outlined'}
+            color={selectedCategory === 'Enrichment' ? 'primary' : 'default'}
+            aria-pressed={selectedCategory === 'Enrichment'}
+            sx={{ fontWeight: selectedCategory === 'Enrichment' ? 'bold' : 'normal' }}
           />
           <Chip
-            label="Company"
+            label="Technology"
             size="medium"
-            onClick={handleChipClick('Company')}
-            variant={selectedCategory === 'Company' ? 'filled' : 'outlined'}
-            color={selectedCategory === 'Company' ? 'primary' : 'default'}
-            aria-pressed={selectedCategory === 'Company'}
-            sx={{ fontWeight: selectedCategory === 'Company' ? 'bold' : 'normal' }}
+            onClick={handleChipClick('Technology')}
+            variant={selectedCategory === 'Technology' ? 'filled' : 'outlined'}
+            color={selectedCategory === 'Technology' ? 'primary' : 'default'}
+            aria-pressed={selectedCategory === 'Technology'}
+            sx={{ fontWeight: selectedCategory === 'Technology' ? 'bold' : 'normal' }}
           />
         </Box>
         <Box

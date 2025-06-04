@@ -1,3 +1,4 @@
+//src/pages/HumanResourcesPage/HumanResourcesPage.jsx
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import AppTheme from '../../shared-theme/AppTheme';
