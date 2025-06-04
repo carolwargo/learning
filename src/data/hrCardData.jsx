@@ -1,5 +1,5 @@
 //src/data/hrCardData.jsx
-const hrCardData = [
+const cardData = [
   {
     tag: 'Startup',
     title: 'Masterclass: How to Start Your Own Beauty Business',
@@ -91,4 +91,4 @@ const hrCardData = [
   },
 ];
 
-export default hrCardData;
+export default cardData;

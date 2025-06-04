@@ -44,12 +44,21 @@ export default function AppAppBar() {
         boxShadow: 0,
         bgcolor: 'transparent',
         backgroundImage: 'none',
+        px: 0,  
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth={false} 
+      sx={{ 
+        backgroundColor: 'hsl(220, 20%, 80%)',
+        maxWidth: '100%',
+            width: '100%',
+               px: { xs: 0}
+               }}>
         <StyledToolbar variant="dense" disableGutters>
-          <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
-            <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <Box 
+          sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
+            <Box 
+            sx={{ display: { xs: 'none', md: 'flex' } }}>
               <Button variant="text" color="info" size="small">
                 Features
               </Button>

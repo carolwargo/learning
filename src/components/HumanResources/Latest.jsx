@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
-import hrLearning from '../../data/hrCardData.jsx'; // Importing hrLearning data
+import businessLearning from '../../data/businessLearning.jsx';
 
 import Button from '@mui/material/Button';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
@@ -74,7 +74,7 @@ function Author({ authors }) {
       }}
     >
       <Box
-        sx={{ display: 'flex', flexDirection: 'row', gap: 1, alignItems: 'center' }}
+        sx={{ display: 'flex',  mt: 1, flexDirection: 'row', gap: 1, alignItems: 'center' }}
       >
         <AvatarGroup max={3}>
           {authors.map((author, index) => (
@@ -82,7 +82,7 @@ function Author({ authors }) {
               key={index}
               alt={author.name}
               src={author.avatar}
-              sx={{ width: 24, height: 24 }}
+              sx={{ width: 24, height: 24, padding: 0.5, fontSize: '0.75rem' }}
             />
           ))}
         </AvatarGroup>
@@ -121,9 +121,9 @@ export default function Latest() {
       <Typography variant="h2" gutterBottom>
         Latest
       </Typography>
-      <Grid container spacing={8} columns={12} sx={{ my: 4 }}>
-        {hrLearning.map((article, index) => (
-          <Grid key={index} size={{ xs: 12, sm: 6 }}>
+      <Grid container spacing={8} columns={12}>
+        {businessLearning.map((article, index) => (
+          <Grid key={index} size={{ xs: 12, sm: 6,  }}>
             <Box
               sx={{
                 display: 'flex',
@@ -131,10 +131,13 @@ export default function Latest() {
                 justifyContent: 'space-between',
                 gap: 1,
                 height: '100%',
-                borderBottom: '1px solid rgb(221, 221, 221)',
+           backgroundColor: 'background.paper',
+           boxShadow: 3,
               }}
             >
-              <Typography gutterBottom variant="caption"  component="div">
+              <Box sx={{  p: 5, flexGrow: 1 }}>
+              <Typography gutterBottom variant="caption"  
+              component="div">
                 {article.tag}
               </Typography>
                  <Author authors={article.authors} />
@@ -145,6 +148,7 @@ export default function Latest() {
                 onBlur={handleBlur}
                 tabIndex={0}
                 className={focusedCardIndex === index ? 'Mui-focused' : ''}
+              sx={{my: 1}}
               >
                 {article.title}
                 <NavigateNextRoundedIcon
@@ -156,7 +160,7 @@ export default function Latest() {
                 {article.description}
               </StyledTypography>
 
-                 <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2, mb: 1 }}>
+                 <Box sx={{ display: 'flex', justifyContent: 'space-between', py:2, mb: 1 }}>
                 <Button
                   variant="outlined"
                   size="small"
@@ -174,9 +178,7 @@ export default function Latest() {
                   Add to Cart
                 </Button>
               </Box>
-
-              {/**HOW TO MAKE DIVIDER A BIT DARKER */}
-           <Divider/>
+            </Box>
             </Box>
           </Grid>
         ))}
