@@ -1,10 +1,10 @@
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import AppTheme from '../../shared-theme/AppTheme';
-import AppAppBar from '../../components/Business/AppAppBar';
-import BusinessContent from '../../components/Business/HumanResourcesContent';
-import Latest from '../../components/Business/Latest';
-import Footer from '../../components/Business/Footer';
+import AppAppBar from '../../components/HumanResources/AppAppBar';
+import HumanResourcesContent from '../../components/HumanResources/HumanResourcesContent';
+import Latest from '../../components/HumanResources/Latest';
+import Footer from '../../components/HumanResources/Footer';
 import "bootstrap/dist/css/bootstrap.min.css"; 
 
 export default function HRPage(props) {
@@ -15,9 +15,9 @@ export default function HRPage(props) {
       <Container
         maxWidth="lg"
         component="main"
-        sx={{ display: 'flex', flexDirection: 'column', my: 16, gap: 4 }}
+        sx={{ display: 'flex', flexDirection: 'column', mt: 12, gap: 4 }}
       >
-        <BusinessContent />
+        <HumanResourcesContent />
         <Latest />
         <Footer />
       </Container>

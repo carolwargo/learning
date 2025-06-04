@@ -21,7 +21,6 @@ import RssFeedRoundedIcon from '@mui/icons-material/RssFeedRounded';
 import Button from '@mui/material/Button';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
-
 import { learningCardData } from '../../data/learningCardData.jsx'; // Line 23: Matches provided path
 
 // Line 25: Log to verify import

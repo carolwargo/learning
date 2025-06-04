@@ -5,6 +5,7 @@ import BottomAppBar from "./components/Nav/BottomAppBar";
 const LearningPage = lazy(() => import("./pages/LearningPage/LearningPage"));
 const HumanResourcesPage = lazy(() => import("./pages/HumanResourcesPage/HumanResourcesPage"));
 const AnalysisReport = lazy(() => import("./pages/AnalysisReport/AnalysisReport"));
+const BusinessPage = lazy(() => import("./pages/BusinessPage/BusinessPage"));
 
 function AppRoutes() {
   const location = useLocation();
@@ -16,6 +17,7 @@ function AppRoutes() {
         <Routes>
           <Route path="/" element={<LearningPage />} />
           <Route path="/hr" element={<HumanResourcesPage />} />
+            <Route path="/business" element={<BusinessPage />} />
           <Route path="/analysis-report" element={<AnalysisReport />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

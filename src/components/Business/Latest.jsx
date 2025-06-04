@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import { styled } from '@mui/material/styles';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
-import hrLearning from '../../data/hrCardData.jsx'; // Importing hrLearning data
+import businessLearning from '../../data/businessLearning.jsx';
 
 import Button from '@mui/material/Button';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
@@ -122,7 +122,7 @@ export default function Latest() {
         Latest
       </Typography>
       <Grid container spacing={8} columns={12} sx={{ my: 4 }}>
-        {hrLearning.map((article, index) => (
+        {businessLearning.map((article, index) => (
           <Grid key={index} size={{ xs: 12, sm: 6 }}>
             <Box
               sx={{

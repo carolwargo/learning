@@ -1,5 +1,5 @@
-//src/data/businessCardData.jsx
-const businessCardData =[
+//src/data/businessLearning.jsx
+const businessLearning = [
   {
     tag: 'Startup',
     title: 'Masterclass: How to Start Your Own Beauty Business',
@@ -91,4 +91,4 @@ const businessCardData =[
   },
 ];
 
-export default businessCardData;
+export default businessLearning;
