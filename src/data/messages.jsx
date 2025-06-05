@@ -1,47 +1,48 @@
 //./src/data/messages.jsx
+// ./src/data/messages.jsx
 const messages = [
   {
     id: 1,
-    primary: 'Hair Color Consultation',
-    secondary: 'Hey! Thinking of going auburn this fall—can I book a quick consult?',
-    person: '/static/images/avatar/5.jpg'
+    primary: 'New Employee Onboarding',
+    secondary: 'Hi! Can we schedule a welcome session for our new hire starting next week?',
+    person: '/static/images/avatar/5.jpg',
   },
   {
     id: 2,
-    primary: 'Birthday Glam Ideas',
-    secondary: 'Any suggestions for a bold birthday look? I want to go full glam with lashes!',
-    person: '/static/images/avatar/1.jpg'
+    primary: 'Performance Review Reminder',
+    secondary: 'Don’t forget to submit your self-assessment for the Q2 review by Friday!',
+    person: '/static/images/avatar/1.jpg',
   },
   {
     id: 3,
-    primary: 'New Skincare Routine',
-    secondary: 'Started the new Vitamin C serum today—will share results soon!',
-    person: '/static/images/avatar/2.jpg'
+    primary: 'Training Program Update',
+    secondary: 'Just enrolled in the Leadership Essentials course—excited to start!',
+    person: '/static/images/avatar/2.jpg',
   },
   {
     id: 4,
-    primary: 'Lash Extension Appointment',
-    secondary: 'Yes! I’m booked for Friday at 3 PM. Can’t wait to try the hybrid set!',
-    person: '/static/images/avatar/3.jpg'
+    primary: 'Benefits Enrollment Confirmation',
+    secondary: 'I’ve completed my health plan enrollment for 2026. Can you confirm receipt?',
+    person: '/static/images/avatar/3.jpg',
   },
   {
     id: 5,
-    primary: 'Makeup Masterclass Invite',
-    secondary: 'There’s a live demo on contouring this weekend. Want to join me?',
-    person: '/static/images/avatar/4.jpg'
+    primary: 'Team Building Event Invite',
+    secondary: 'Join us for a virtual team-building workshop this Thursday at 2 PM. RSVP!',
+    person: '/static/images/avatar/4.jpg',
   },
   {
     id: 6,
-    primary: 'Product Restock Alert',
-    secondary: 'Just got the email—your favorite setting spray is finally back in stock!',
-    person: '/static/images/avatar/5.jpg'
+    primary: 'Policy Update Notification',
+    secondary: 'New remote work policy is live—check the HR portal for details!',
+    person: '/static/images/avatar/5.jpg',
   },
   {
     id: 7,
-    primary: 'Salon Launch Party',
-    secondary: 'We’re hosting a soft launch Friday night. Cocktails, demos, and giveaways!',
-    person: '/static/images/avatar/1.jpg'
-  }
+    primary: 'Employee Engagement Survey',
+    secondary: 'We’re launching our annual survey next week. Your feedback matters!',
+    person: '/static/images/avatar/1.jpg',
+  },
 ];
 
 export default messages;
