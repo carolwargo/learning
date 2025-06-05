@@ -1,5 +1,5 @@
 //src/data/cardData.jsx
-import RR from '../assets/images/RR.jpg';
+import RR from '../assets/images/RR.png';
 const cardData = [
  {
     id: '1',
