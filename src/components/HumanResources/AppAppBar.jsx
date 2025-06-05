@@ -11,7 +11,6 @@ import MenuItem from '@mui/material/MenuItem';
 import Drawer from '@mui/material/Drawer';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseRoundedIcon from '@mui/icons-material/CloseRounded';
-import ColorModeIconDropdown from '../../shared-theme/ColorModeIconDropdown';
 
 
 const StyledToolbar = styled(Toolbar)(({ theme }) => ({
@@ -91,10 +90,10 @@ export default function AppAppBar() {
             <Button color="primary" variant="contained" size="small">
               Sign up
             </Button>
-            <ColorModeIconDropdown />
+          
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
-            <ColorModeIconDropdown size="medium" />
+        
             <IconButton aria-label="Menu button" onClick={toggleDrawer(true)}>
               <MenuIcon />
             </IconButton>

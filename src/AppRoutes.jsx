@@ -1,7 +1,7 @@
 // src/AppRoutes.jsx
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
-import BottomAppBar from './components/Nav/BottomAppBar';
+//import BottomAppBar from './components/Nav/BottomAppBar';
 
 const LearningPage = lazy(() => import('./pages/LearningPage/LearningPage'));
 const HumanResourcesPage = lazy(() => import('./pages/HumanResourcesPage/HumanResourcesPage'));
@@ -11,7 +11,7 @@ const ArticlePage = lazy(() => import('./components/HumanResources/ArticlePage')
 function AppRoutes() {
   const location = useLocation();
   const hideAppBarRoutes = ['/analysis-report', '/article'];
-  const showBars = !hideAppBarRoutes.some((route) => location.pathname.startsWith(route));
+  //const showBars = !hideAppBarRoutes.some((route) => location.pathname.startsWith(route));
 
   return (
     <>
@@ -24,7 +24,7 @@ function AppRoutes() {
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-      {showBars && <BottomAppBar />}
+
     </>
   );
 }

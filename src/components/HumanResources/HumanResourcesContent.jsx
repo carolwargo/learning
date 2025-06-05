@@ -125,6 +125,9 @@ export default function HumanResourcesContent() {
   const [focusedCardIndex, setFocusedCardIndex] = React.useState(null);
   const [selectedCategory, setSelectedCategory] = React.useState('All categories');
 
+  // Get unique tags from cardData
+  const tags = [...new Set(cardData.map((card) => card.tag))];
+
   const handleFocus = (index) => {
     setFocusedCardIndex(index);
   };
@@ -133,9 +136,8 @@ export default function HumanResourcesContent() {
     setFocusedCardIndex(null);
   };
 
-  const handleChipClick = (category) => () => {
-    setSelectedCategory(category);
-    console.info(`Filter chip clicked: ${category}`);
+  const handleChipClick = (category) => {
+    setSelectedCategory(category === selectedCategory ? 'All categories' : category); // Toggle to All if same category
   };
 
   const filteredCards = selectedCategory === 'All categories'
@@ -188,48 +190,34 @@ export default function HumanResourcesContent() {
           <Chip
             label="All categories"
             size="medium"
-            onClick={handleChipClick('All categories')}
+            onClick={() => handleChipClick('All categories')}
             variant={selectedCategory === 'All categories' ? 'filled' : 'outlined'}
             color={selectedCategory === 'All categories' ? 'primary' : 'default'}
             aria-pressed={selectedCategory === 'All categories'}
             sx={{ fontWeight: selectedCategory === 'All categories' ? 'bold' : 'normal' }}
           />
-          <Chip
-            label="Engineering"
-            size="medium"
-            onClick={handleChipClick('Engineering')}
-            variant={selectedCategory === 'Engineering' ? 'filled' : 'outlined'}
-            color={selectedCategory === 'Engineering' ? 'primary' : 'default'}
-            aria-pressed={selectedCategory === 'Engineering'}
-            sx={{ fontWeight: selectedCategory === 'Engineering' ? 'bold' : 'normal' }}
-          />
-          <Chip
-            label="Product"
-            size="medium"
-            onClick={handleChipClick('Product')}
-            variant={selectedCategory === 'Product' ? 'filled' : 'outlined'}
-            color={selectedCategory === 'Product' ? 'primary' : 'default'}
-            aria-pressed={selectedCategory === 'Product'}
-            sx={{ fontWeight: selectedCategory === 'Product' ? 'bold' : 'normal' }}
-          />
-          <Chip
-            label="Design"
-            size="medium"
-            onClick={handleChipClick('Design')}
-            variant={selectedCategory === 'Design' ? 'filled' : 'outlined'}
-            color={selectedCategory === 'Design' ? 'primary' : 'default'}
-            aria-pressed={selectedCategory === 'Design'}
-            sx={{ fontWeight: selectedCategory === 'Design' ? 'bold' : 'normal' }}
-          />
-          <Chip
-            label="Company"
-            size="medium"
-            onClick={handleChipClick('Company')}
-            variant={selectedCategory === 'Company' ? 'filled' : 'outlined'}
-            color={selectedCategory === 'Company' ? 'primary' : 'default'}
-            aria-pressed={selectedCategory === 'Company'}
-            sx={{ fontWeight: selectedCategory === 'Company' ? 'bold' : 'normal' }}
-          />
+          {tags.map((tag) => (
+            <Chip
+              key={tag}
+              label={tag}
+              size="medium"
+              onClick={() => handleChipClick(tag)}
+              variant={selectedCategory === tag ? 'filled' : 'outlined'}
+              color={selectedCategory === tag ? 'primary' : 'default'}
+              aria-pressed={selectedCategory === tag}
+              sx={{ fontWeight: selectedCategory === tag ? 'bold' : 'normal' }}
+            />
+          ))}
+          {selectedCategory !== 'All categories' && (
+            <Chip
+              label="Clear Filter"
+              size="medium"
+              onClick={() => handleChipClick('All categories')}
+              variant="outlined"
+              color="secondary"
+              sx={{ fontWeight: 'normal' }}
+            />
+          )}
         </Box>
         <Box
           sx={{
@@ -247,70 +235,76 @@ export default function HumanResourcesContent() {
         </Box>
       </Box>
       <Grid container spacing={2} columns={12}>
-        {filteredCards.map((card, index) => (
-          <Grid
-            size={{ xs: 12, md: cardData.indexOf(card) < 2 ? 6 : 4 }}
-            key={card.id}
-          >
-            <SyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(index)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === index ? 'Mui-focused' : ''}
-              sx={{ height: '100%' }}
+        {filteredCards.length > 0 ? (
+          filteredCards.map((card, index) => (
+            <Grid
+              size={{ xs: 12, md: cardData.indexOf(card) < 2 ? 6 : 4 }}
+              key={card.id}
             >
-              {card.img && (
-                <CardMedia
-                  component="img"
-                  alt={card.title}
-                  image={card.img}
-                  sx={{
-                    height: { sm: 'auto', md: cardData.indexOf(card) < 2 ? 'auto' : '50%' },
-                    aspectRatio: cardData.indexOf(card) < 2 ? '16 / 9' : '',
-                    borderBottom: '1px solid',
-                    borderColor: 'divider',
-                  }}
-                />
-              )}
-              <SyledCardContent
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: card.img ? 'auto' : '100%',
-                }}
+              <SyledCard
+                variant="outlined"
+                onFocus={() => handleFocus(index)}
+                onBlur={handleBlur}
+                tabIndex={0}
+                className={focusedCardIndex === index ? 'Mui-focused' : ''}
+                sx={{ height: '100%' }}
               >
-                <div>
-                  <Typography gutterBottom variant="caption" component="div">
-                    {card.tag}
-                  </Typography>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {card.title}
-                  </Typography>
-                  <StyledTypography
-                    variant="body2"
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {card.description}
-                  </StyledTypography>
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    component={Link}
-                    to={`/article/${card.id}`}
-                    sx={{ mt: 1 }}
-                    aria-label={`View full article: ${card.title}`}
-                  >
-                    View Full Article
-                  </Button>
-                </div>
-              </SyledCardContent>
-              <Author authors={card.authors} />
-            </SyledCard>
+                {card.img && (
+                  <CardMedia
+                    component="img"
+                    alt={card.title}
+                    image={card.img}
+                    sx={{
+                      height: { sm: 'auto', md: cardData.indexOf(card) < 2 ? 'auto' : '50%' },
+                      aspectRatio: cardData.indexOf(card) < 2 ? '16 / 9' : '',
+                      borderBottom: '1px solid',
+                      borderColor: 'divider',
+                    }}
+                  />
+                )}
+                <SyledCardContent
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    height: card.img ? 'auto' : '100%',
+                  }}
+                >
+                  <div>
+                    <Typography gutterBottom variant="caption" component="div">
+                      {card.tag}
+                    </Typography>
+                    <Typography gutterBottom variant="h6" component="div">
+                      {card.title}
+                    </Typography>
+                    <StyledTypography
+                      variant="body2"
+                      color="text.secondary"
+                      gutterBottom
+                    >
+                      {card.description}
+                    </StyledTypography>
+                    <Button
+                      variant="outlined"
+                      size="small"
+                      component={Link}
+                      to={`/article/${card.id}`}
+                      sx={{ mt: 1 }}
+                      aria-label={`View full article: ${card.title}`}
+                    >
+                      View Full Article
+                    </Button>
+                  </div>
+                </SyledCardContent>
+                <Author authors={card.authors} />
+              </SyledCard>
+            </Grid>
+          ))
+        ) : (
+          <Grid item xs={12}>
+            <Typography variant="body1">No articles found for this filter.</Typography>
           </Grid>
-        ))}
+        )}
       </Grid>
     </Box>
   );

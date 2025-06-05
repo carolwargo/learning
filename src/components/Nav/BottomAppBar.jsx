@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "@mui/material/Link";
 import {
   AppBar,
   Avatar,
@@ -158,35 +159,66 @@ export default function BottomAppBar() {
               display: "flex",
               flexDirection: "column",
               gap: 2,
-              px: 2,
+              px: 4,
             }}
           >
-            <Stack
-              direction="row"
-              spacing={2}
-              alignItems="center"
-              sx={{ mb: 2, ml: 1 }}
-            >
-              <Avatar alt="Username" src={GirlCamera} />
-              <Box>
-                <Typography variant="subtitle1" fontWeight="bold">
-                  Jocelyn Doe
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  @jocelyndoe
-                </Typography>
-              </Box>
-            </Stack>
+        <Stack
+  direction="column"
+  spacing={1}
+  alignItems="center"
+  justifyContent="center"
+  textAlign="center"
+  sx={{ my: 2 }}
+>
+<Avatar sx={{ width: 80, height: 80, bgcolor: 'secondary.main', fontSize: 32 }}>
+  HR
+</Avatar>
 
-            <Typography
+  <Typography variant="subtitle1" fontWeight="bold"
+  sx={{ fontSize: "1.4rem", fontWeight: "regular" }}>
+    We want to hear from you!
+  </Typography>
+
+
+<Typography
+  variant="body2"
+  color="text.secondary"
+  fontWeight="300"
+  sx={{ ml: 2, fontSize: ".9rem" }}
+>
+  Phone:{" "}
+  <Link href="tel:+15551234567" underline="hover" color="secondary.main">
+    +1 (555) 123-4567
+  </Link>
+  <br />
+  Email:{" "}
+  <Link href="mailto:email@gmail.com" underline="hover" color="secondary.main">
+    email@gmail.com
+  </Link>
+</Typography>
+
+</Stack>
+
+
+              <Typography
               variant="body2"
               color="text.secondary"
-              sx={{ ml: 1, mb: 2 }}
+              fontWeight="300"
+              sx={{ ml: 1, fontSize: "1rem", mt: 2 }}
             >
-              Find the perfect candidate.
+            Have questions or need assistance? <br />Please fill out the form to send a message to our HR team. 
             </Typography>
+       <TextField
+  label="Employee Name"
+  type="text"
+  fullWidth
+  required
+  size="small"
+      sx={{ "& .MuiInputBase-input": { py: 1 } }}
+/>
+
             <TextField
-              label="Job Title"
+              label="Employee Position"
               type="text"
               fullWidth
               required
@@ -194,31 +226,16 @@ export default function BottomAppBar() {
               sx={{ "& .MuiInputBase-input": { py: 1 } }}
             />
             <TextField
-              label="Company Name"
+              label="Subject"
               type="text"
               fullWidth
               required
               size="small"
               sx={{ "& .MuiInputBase-input": { py: 1 } }}
             />
+       
             <TextField
-              label="Location"
-              type="text"
-              fullWidth
-              required
-              size="small"
-              sx={{ "& .MuiInputBase-input": { py: 1 } }}
-            />
-            <TextField
-              label="Salary"
-              type="text"
-              fullWidth
-              required
-              size="small"
-              sx={{ "& .MuiInputBase-input": { py: 1 } }}
-            />
-            <TextField
-              label="Job Description"
+              label="Message"
               type="text"
               fullWidth
               required
@@ -229,13 +246,14 @@ export default function BottomAppBar() {
             />
           </DialogContent>
 
-          <CardActions sx={{ justifyContent: "flex-end" }}>
-            <Button onClick={handleCloseModal} autoFocus>
-              Cancel
-            </Button>
-            <Button variant="contained" color="primary">
-              Post
-            </Button>
+          <CardActions sx={{ justifyContent: "flex-end", mb:2,     px: 2 }}>
+  <Button onClick={handleCloseModal} autoFocus sx={{ color: 'secondary.main' }}>
+  Cancel
+</Button>
+<Button variant="contained" sx={{ bgcolor: 'secondary.main', '&:hover': { bgcolor: 'secondary.dark' } }}>
+  Send
+</Button>
+
           </CardActions>
         </form>
       </Dialog>

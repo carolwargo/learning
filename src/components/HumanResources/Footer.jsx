@@ -15,7 +15,8 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 
 function Copyright() {
   return (
-    <Typography variant="body2" sx={{ color: 'text.secondary', mt: 1 }}>
+    
+    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
       {'Copyright © '}
       <Link color="text.secondary" href="mailto:carolwargo.dev@gmail.com">
 Carol Wargo
@@ -29,7 +30,7 @@ Carol Wargo
 export default function Footer() {
   return (
     <React.Fragment>
-      <Divider sx={{ my: 3 }} />
+
 
      <Container maxWidth={false}
         sx={{
@@ -37,7 +38,8 @@ export default function Footer() {
           flexDirection: 'column',
           alignItems: 'center',
           gap: { xs: 4},
-              pt:  { sm: 4},
+          mt: 4,
+              pt:  { sm: 4, md: 10 },
           textAlign: { sm: 'center', md: 'left' },
              backgroundColor: 'hsl(220, 20%, 80%)',
         }}
@@ -178,7 +180,7 @@ export default function Footer() {
     px: 5,
   }}
 >
-  {/* Typography on top of icons */}
+  {/* Typography on top of icons 
   <Typography
     variant="body2"
     sx={{
@@ -188,7 +190,7 @@ fontWeight: 200, fontSize: '1rem'
     }}
   >
    Follow us on social media: 
-  </Typography>
+  </Typography>*/}
 
   {/* Stack of icons */}
   <Stack
@@ -198,7 +200,7 @@ fontWeight: 200, fontSize: '1rem'
     sx={{
       justifyContent: 'left',
       color: 'text.secondary',
-      mt: 4, // push icons down so Typography overlaps visibly
+// push icons down so Typography overlaps visibly
     }}
   >
         <IconButton color="inherit" size="small" href="https://github.com/mui" aria-label="GitHub">
@@ -221,7 +223,7 @@ fontWeight: 200, fontSize: '1rem'
           sx={{
             display: 'flex',
             justifyContent: 'center',
- mb: 2,
+
               px: 5,
                    maxWidth: '100%',
             width: '1370px', 
@@ -229,7 +231,7 @@ fontWeight: 200, fontSize: '1rem'
           }}
         >
           
-       
+             <Divider sx={{ mt: 4 }} />
                 <Copyright />
         
         </Box>

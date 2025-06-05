@@ -370,7 +370,7 @@ export const inputsCustomizations = {
       input: {
         '&::placeholder': {
           opacity: 0.7,
-          color: gray[500],
+          color: gray[300],
         },
       },
     },
