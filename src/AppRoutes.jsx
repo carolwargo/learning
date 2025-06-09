@@ -7,7 +7,7 @@ const LearningPage = lazy(() => import('./pages/LearningPage/LearningPage'));
 const HumanResourcesPage = lazy(() => import('./pages/HumanResourcesPage/HumanResourcesPage'));
 const AnalysisReport = lazy(() => import('./pages/AnalysisReport/AnalysisReport'));
 const ArticlePage = lazy(() => import('./components/HumanResources/ArticlePage'));
-
+const PaylocityPage = lazy(() => import('./pages/PaylocityPage'));
 function AppRoutes() {
   const location = useLocation();
   const hideAppBarRoutes = ['/analysis-report', '/article'];
@@ -19,6 +19,7 @@ function AppRoutes() {
         <Routes>
           <Route path="/" element={<LearningPage />} />
           <Route path="/hr" element={<HumanResourcesPage />} />
+          <Route path="/paylocity" element={<PaylocityPage />} />
           <Route path="/analysis-report" element={<AnalysisReport />} />
           <Route path="/article/:id" element={<ArticlePage />} />
           <Route path="*" element={<NotFound />} />

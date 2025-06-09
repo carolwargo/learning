@@ -152,9 +152,7 @@ export default function HumanResourcesContent() {
         </Typography>
         <Typography>Explore available resource articles by selecting a category of interest below to filter.</Typography>
       </div>
-      <Box
-        sx={{
-          display: { xs: 'flex', sm: 'none' },
+         display: { xs: 'flex', sm: 'none' },
           flexDirection: 'row',
           gap: 1,
           width: { xs: '100%', md: 'fit-content' },
@@ -165,7 +163,9 @@ export default function HumanResourcesContent() {
         <IconButton size="small" aria-label="RSS feed">
           <RssFeedRoundedIcon />
         </IconButton>
-      </Box>
+      </Box>  <Box
+        sx={{
+     
       <Box
         sx={{
           display: 'flex',

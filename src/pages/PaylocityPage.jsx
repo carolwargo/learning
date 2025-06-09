@@ -13,7 +13,19 @@ import { styled } from '@mui/material/styles';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
-import businessLearning from '../../data/businessLearning.jsx';
+import payData from '../data/payData.jsx';
+import RssFeedRoundedIcon from '@mui/icons-material/RssFeedRounded';
+import IconButton from '@mui/material/IconButton';
+import FormControl from '@mui/material/FormControl';
+import InputAdornment from '@mui/material/InputAdornment';
+import OutlinedInput from '@mui/material/OutlinedInput';
+import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
+import Container from '@mui/material/Container';
+import AppTheme from '../shared-theme/AppTheme.jsx';
+import AppAppBar from '../components/HumanResources/AppAppBar.jsx';
+import CssBaseline from '@mui/material/CssBaseline';
+import Paylocity from '../components/HumanResources/pay-articles/Paylocity.jsx';
+import RodNReel from '../assets/images/RodNReel.png';
 
 const StyledTypography = styled(Typography)({
   display: '-webkit-box',
@@ -102,7 +114,28 @@ Author.propTypes = {
   ).isRequired,
 };
 
-export default function Latest() {
+export function Search({ id = 'search' }) {
+  return (
+    <FormControl sx={{ width: { xs: '100%', md: '25ch' } }} variant="outlined">
+      <OutlinedInput
+        size="small"
+        id={id}
+        placeholder="Search…"
+        sx={{ flexGrow: 1 }}
+        startAdornment={
+          <InputAdornment position="start" sx={{ color: 'text.primary' }}>
+            <SearchRoundedIcon fontSize="small" />
+          </InputAdornment>
+        }
+        inputProps={{
+          'aria-label': 'search',
+        }}
+      />
+    </FormControl>
+  );
+}
+
+export default function  PaylocityPage(props) {
   const [focusedCardIndex, setFocusedCardIndex] = React.useState(null);
   const [selectedCategory, setSelectedCategory] = React.useState('All Categories');
 
@@ -119,20 +152,72 @@ export default function Latest() {
     console.info(`Filter chip clicked: ${category}`);
   };
 
-  // Get unique categories from businessLearning
-  const categories = ['All Categories', ...new Set(businessLearning.map((article) => article.tag))];
+  // Get unique categories from payData
+  const categories = ['All Categories', ...new Set(payData.map((article) => article.tag))];
 
   // Filter articles based on selected category
   const filteredArticles = selectedCategory === 'All Categories'
-    ? businessLearning
-    : businessLearning.filter((article) => article.tag === selectedCategory);
+    ?payData
+    :payData.filter((article) => article.tag === selectedCategory);
 
   return (
-    <div>
-      <Divider sx={{ my: 4 }} />
-      <Typography variant="h2" gutterBottom>
-        Latest
+    <AppTheme {...props}>
+      <CssBaseline enableColorScheme />
+      <AppAppBar />
+        <Box
+      component="img"
+      src={RodNReel}
+      alt="Paylocity Hero"
+      sx={{
+        width: '100%',
+        maxHeight: '500px',
+        objectFit: 'cover',
+        mt: 2, // margin-top spacing
+        mb: 4, // margin-bottom spacing
+      }}
+    />
+          <Container maxWidth={false} 
+        component="main"
+        sx={{ display: 'flex',     
+          maxWidth: '100%',
+            width: '1370px', 
+            flexDirection: 'column', 
+            mt: 2, 
+            gap: 4,
+        }}
+      >
+
+      <Typography variant="h1" gutterBottom
+      sx={{color:'#ff3600', fontWeight: 'bold'}}>
+      Paylocity
       </Typography>
+      
+         <Box
+              sx={{
+                display: { xs: 'flex', sm: 'none' },
+                flexDirection: 'row',
+                gap: 1,
+                width: { xs: '100%', md: 'fit-content' },
+                overflow: 'auto',
+              }}
+            >
+              <Search id="mobile-search" />
+              <IconButton size="small" aria-label="RSS feed">
+                <RssFeedRoundedIcon />
+              </IconButton>
+            </Box>
+
+                <Box
+        sx={{
+          display: 'flex',
+          flexDirection: { xs: 'column-reverse', md: 'row' },
+          width: '100%',
+          justifyContent: 'space-between',
+          alignItems: { xs: 'start', md: 'center' },
+          gap: 4,
+          overflow: 'auto',
+        }}
+      >
       <Box
         sx={{
           display: 'inline-flex',
@@ -140,7 +225,7 @@ export default function Latest() {
           gap: 1,
           overflow: 'auto',
           flexWrap: 'wrap',
-          mb: 4,
+
         }}
       >
         {categories.map((category) => (
@@ -150,11 +235,26 @@ export default function Latest() {
             size="medium"
             onClick={handleChipClick(category)}
             variant={selectedCategory === category ? 'filled' : 'outlined'}
-            color={selectedCategory === category ? 'primary' : 'default'}
+            color={selectedCategory === category ? 'secondary' : 'default'}
             aria-pressed={selectedCategory === category}
             sx={{ fontWeight: selectedCategory === category ? 'bold' : 'normal' }}
           />
         ))}
+      </Box>
+          <Box
+          sx={{
+            display: { xs: 'none', sm: 'flex' },
+            flexDirection: 'row',
+            gap: 1,
+            width: { xs: '100%', md: 'fit-content' },
+            overflow: 'auto',
+          }}
+        >
+          <Search id="desktop-search" />
+          <IconButton size="small" aria-label="RSS feed">
+            <RssFeedRoundedIcon />
+          </IconButton>
+        </Box>
       </Box>
       <Grid container spacing={8} columns={12}>
         {filteredArticles.map((article, index) => (
@@ -171,9 +271,18 @@ export default function Latest() {
               }}
             >
               <Box sx={{ p: 5, flexGrow: 1 }}>
-                <Typography gutterBottom variant="caption" component="div">
-                  {article.tag}
-                </Typography>
+         <Chip
+  label={article.tag}
+  size="small"
+       color= 'secondary' 
+  sx={{
+    fontWeight: 'bold',
+    py: 1.5,
+    px: 1,
+    mb: 1,
+  }}
+/>
+
                 <Author authors={article.authors} />
                 <TitleTypography
                   gutterBottom
@@ -214,12 +323,16 @@ export default function Latest() {
           </Grid>
         ))}
       </Grid>
+         <Box sx={{ display: 'flex', flexDirection: 'row', pt: 5 }}>
+ <Paylocity/>
+         </Box>
+     
       {/*
      <Box sx={{ display: 'flex', flexDirection: 'row', pt: 5 }}>
         <Pagination count={9} boundaryCount={9} />
       </Box>
       */}
-    </div>
+        </Container>
+     </AppTheme>
   );
 }
-   

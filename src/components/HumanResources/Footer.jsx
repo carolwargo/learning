@@ -8,10 +8,13 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import GitHubIcon from '@mui/icons-material/GitHub';
+//import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/X';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import EmailIcon from '@mui/icons-material/Email';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
 
 function Copyright() {
   return (
@@ -68,7 +71,7 @@ export default function Footer() {
               <Typography
                 variant="body2"
                 gutterBottom
-                sx={{ fontWeight: 600, fontSize: '1.2rem' } }
+                sx={{ fontWeight: 600, fontSize: '1.2rem', mt: 3 } }
               >
                 Join the newsletter
               </Typography>
@@ -203,16 +206,22 @@ fontWeight: 200, fontSize: '1rem'
 // push icons down so Typography overlaps visibly
     }}
   >
-        <IconButton color="inherit" size="small" href="https://github.com/mui" aria-label="GitHub">
+
+    <IconButton color="inherit" size="small" href="mailto: " aria-label="Email Us">
+  <EmailIcon />
+</IconButton>
+
+    <IconButton color="inherit" size="small" href="tel:+11234567890" aria-label="Call Us">
+  <FontAwesomeIcon icon={faPhone} />
+</IconButton>
+
+        <IconButton color="inherit" size="small" href="https://github.com/" aria-label="GitHub">
       <FacebookIcon/>
     </IconButton>
-    <IconButton color="inherit" size="small" href="https://github.com/mui" aria-label="GitHub">
-      <GitHubIcon />
-    </IconButton>
-    <IconButton color="inherit" size="small" href="https://x.com/MaterialUI" aria-label="X">
+    <IconButton color="inherit" size="small" href="https://x.com/" aria-label="X">
       <TwitterIcon />
     </IconButton>
-    <IconButton color="inherit" size="small" href="https://www.linkedin.com/company/mui/" aria-label="LinkedIn">
+    <IconButton color="inherit" size="small" href="https://www.linkedin.com/" aria-label="LinkedIn">
       <LinkedInIcon />
     </IconButton>
   </Stack>

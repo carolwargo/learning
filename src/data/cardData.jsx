@@ -1,9 +1,8 @@
 //src/data/cardData.jsx
-import RR from '../assets/images/RR.png';
 const cardData = [
  {
     id: '1',
-       img: 'RR',
+    img: 'https://picsum.photos/800/450?random=1',
     tag: 'Regulations',
     title: 'Understanding Maryland Employment Laws: Pay Regulations ',
     description:
@@ -72,7 +71,6 @@ Notable Laws:
       { name: 'AI Assisted', avatar: '/static/images/avatar/grok.jpg' },
     ],
   },
-
 
 
    {
@@ -215,15 +213,13 @@ Provide access to digital onboarding materials (e.g., online tutorials, menu ove
 
 
    {
-    id: '5',
+    id: '6',
     img: 'https://picsum.photos/800/450?random=1',
     tag: 'Onboarding',
     title: 'Orientation Day Checklist',
     description:
       'Orientation Day Checklist',
     fullContent: `
-
-
 Maryland’s wage laws ensure fair compensation, with specific rules for minimum wages, tipped employees, and pay transparency:
 ### Minimum Wage:
 - The state minimum wage is $15.00 per hour (effective January 1, 2024). Some counties have higher rates: Montgomery County ($15.50–$17.65, depending on employer size, as of July 1, 2025), Howard County ($16.00 for 15+ employees, January 1, 2025), and Prince George’s County ($17.10 until June 30, 2025).

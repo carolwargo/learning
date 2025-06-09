@@ -1,5 +1,4 @@
 // src/components/HumanResources/ArticlePage.jsx
-import React from 'react';
 import { useParams, Link as RouterLink } from 'react-router-dom';
 import { Box, Typography, Button, List, ListItem, ListItemText, Link } from '@mui/material';
 import ArrowBackRoundedIcon from '@mui/icons-material/ArrowBackRounded';
