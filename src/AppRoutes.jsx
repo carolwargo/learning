@@ -6,11 +6,14 @@ import { Suspense, lazy } from 'react';
 const LearningPage = lazy(() => import('./pages/LearningPage/LearningPage'));
 const HumanResourcesPage = lazy(() => import('./pages/HumanResourcesPage/HumanResourcesPage'));
 const AnalysisReport = lazy(() => import('./pages/AnalysisReport/AnalysisReport'));
-const ArticlePage = lazy(() => import('./components/HumanResources/ArticlePage'));
-const PaylocityPage = lazy(() => import('./pages/PaylocityPage'));
+const HRArticlePage = lazy(() => import('./pages/HumanResourcesPage/HRArticlePage'));
+const PaylocityPage = lazy(() => import('./pages/Paylocity/PaylocityPage'));
+const PayArticlePage = lazy(() => import('./pages/Paylocity/PayArticlePage'));
+
+
 function AppRoutes() {
-  const location = useLocation();
-  const hideAppBarRoutes = ['/analysis-report', '/article'];
+  //const location = useLocation();
+  //const hideAppBarRoutes = ['/analysis-report', '/article'];
   //const showBars = !hideAppBarRoutes.some((route) => location.pathname.startsWith(route));
 
   return (
@@ -19,9 +22,16 @@ function AppRoutes() {
         <Routes>
           <Route path="/" element={<LearningPage />} />
           <Route path="/hr" element={<HumanResourcesPage />} />
+          <Route path="/article/:id" element={<HRArticlePage />} />
           <Route path="/paylocity" element={<PaylocityPage />} />
+          <Route path="/paylocity/article/:id" element={<PayArticlePage />} />
+
+          {/* Add the Analysis Report route */}
+          {/* <Route path="/analysis-report" element={<AnalysisReport />} /> */}
+
+          {/* If you want to lazy load the Analysis Report, uncomment the line above and comment the one below */}
           <Route path="/analysis-report" element={<AnalysisReport />} />
-          <Route path="/article/:id" element={<ArticlePage />} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>

@@ -125,9 +125,6 @@ export default function HumanResourcesContent() {
   const [focusedCardIndex, setFocusedCardIndex] = React.useState(null);
   const [selectedCategory, setSelectedCategory] = React.useState('All categories');
 
-  // Get unique tags from cardData
-  const tags = [...new Set(cardData.map((card) => card.tag))];
-
   const handleFocus = (index) => {
     setFocusedCardIndex(index);
   };
@@ -136,8 +133,9 @@ export default function HumanResourcesContent() {
     setFocusedCardIndex(null);
   };
 
-  const handleChipClick = (category) => {
-    setSelectedCategory(category === selectedCategory ? 'All categories' : category); // Toggle to All if same category
+  const handleChipClick = (category) => () => {
+    setSelectedCategory(category);
+    console.info(`Filter chip clicked: ${category}`);
   };
 
   const filteredCards = selectedCategory === 'All categories'
@@ -152,7 +150,9 @@ export default function HumanResourcesContent() {
         </Typography>
         <Typography>Explore available resource articles by selecting a category of interest below to filter.</Typography>
       </div>
-         display: { xs: 'flex', sm: 'none' },
+      <Box
+        sx={{
+          display: { xs: 'flex', sm: 'none' },
           flexDirection: 'row',
           gap: 1,
           width: { xs: '100%', md: 'fit-content' },
@@ -163,9 +163,7 @@ export default function HumanResourcesContent() {
         <IconButton size="small" aria-label="RSS feed">
           <RssFeedRoundedIcon />
         </IconButton>
-      </Box>  <Box
-        sx={{
-     
+      </Box>
       <Box
         sx={{
           display: 'flex',
@@ -190,35 +188,60 @@ export default function HumanResourcesContent() {
           <Chip
             label="All categories"
             size="medium"
-            onClick={() => handleChipClick('All categories')}
+            onClick={handleChipClick('All categories')}
             variant={selectedCategory === 'All categories' ? 'filled' : 'outlined'}
             color={selectedCategory === 'All categories' ? 'primary' : 'default'}
             aria-pressed={selectedCategory === 'All categories'}
             sx={{ fontWeight: selectedCategory === 'All categories' ? 'bold' : 'normal' }}
           />
-          {tags.map((tag) => (
-            <Chip
-              key={tag}
-              label={tag}
-              size="medium"
-              onClick={() => handleChipClick(tag)}
-              variant={selectedCategory === tag ? 'filled' : 'outlined'}
-              color={selectedCategory === tag ? 'primary' : 'default'}
-              aria-pressed={selectedCategory === tag}
-              sx={{ fontWeight: selectedCategory === tag ? 'bold' : 'normal' }}
-            />
-          ))}
-          {selectedCategory !== 'All categories' && (
-            <Chip
-              label="Clear Filter"
-              size="medium"
-              onClick={() => handleChipClick('All categories')}
-              variant="outlined"
-              color="secondary"
-              sx={{ fontWeight: 'normal' }}
-            />
-          )}
+          <Chip
+            label="Regulations"
+            size="medium"
+            onClick={handleChipClick('Laws')}
+            variant={selectedCategory === 'Laws' ? 'filled' : 'outlined'}
+            color={selectedCategory === 'Laws' ? 'primary' : 'default'}
+            aria-pressed={selectedCategory === 'Laws'}
+            sx={{ fontWeight: selectedCategory === 'Laws' ? 'bold' : 'normal' }}
+          />
+          <Chip
+            label="Benefits"
+            size="medium"
+            onClick={handleChipClick('Benefits')}
+            variant={selectedCategory === 'Benefits' ? 'filled' : 'outlined'}
+            color={selectedCategory === 'Benefits' ? 'primary' : 'default'}
+            aria-pressed={selectedCategory === 'Benefits'}
+            sx={{ fontWeight: selectedCategory === 'Benefits' ? 'bold' : 'normal' }}
+          />
+          <Chip
+            label="Onboarding"
+            size="medium"
+            onClick={handleChipClick('Onboarding')}
+            variant={selectedCategory === 'Onboarding' ? 'filled' : 'outlined'}
+            color={selectedCategory === 'Onboarding' ? 'primary' : 'default'}
+            aria-pressed={selectedCategory === 'Onboarding'}
+            sx={{ fontWeight: selectedCategory === 'Onboarding' ? 'bold' : 'normal' }}
+          />
+          <Chip
+            label="Company"
+            size="medium"
+            onClick={handleChipClick('Company')}
+            variant={selectedCategory === 'Company' ? 'filled' : 'outlined'}
+            color={selectedCategory === 'Company' ? 'primary' : 'default'}
+            aria-pressed={selectedCategory === 'Company'}
+            sx={{ fontWeight: selectedCategory === 'Company' ? 'bold' : 'normal' }}
+          />
+
+              <Chip
+            label="Technology"
+            size="medium"
+            onClick={handleChipClick('Technology')}
+            variant={selectedCategory === 'Technology' ? 'filled' : 'outlined'}
+            color={selectedCategory === 'Technology' ? 'primary' : 'default'}
+            aria-pressed={selectedCategory === 'Technology'}
+            sx={{ fontWeight: selectedCategory === 'Technology' ? 'bold' : 'normal' }}
+          />
         </Box>
+        
         <Box
           sx={{
             display: { xs: 'none', sm: 'flex' },
@@ -235,76 +258,70 @@ export default function HumanResourcesContent() {
         </Box>
       </Box>
       <Grid container spacing={2} columns={12}>
-        {filteredCards.length > 0 ? (
-          filteredCards.map((card, index) => (
-            <Grid
-              size={{ xs: 12, md: cardData.indexOf(card) < 2 ? 6 : 4 }}
-              key={card.id}
+        {filteredCards.map((card, index) => (
+          <Grid
+            size={{ xs: 12, md: cardData.indexOf(card) < 2 ? 6 : 4 }}
+            key={card.id}
+          >
+            <SyledCard
+              variant="outlined"
+              onFocus={() => handleFocus(index)}
+              onBlur={handleBlur}
+              tabIndex={0}
+              className={focusedCardIndex === index ? 'Mui-focused' : ''}
+              sx={{ height: '100%' }}
             >
-              <SyledCard
-                variant="outlined"
-                onFocus={() => handleFocus(index)}
-                onBlur={handleBlur}
-                tabIndex={0}
-                className={focusedCardIndex === index ? 'Mui-focused' : ''}
-                sx={{ height: '100%' }}
-              >
-                {card.img && (
-                  <CardMedia
-                    component="img"
-                    alt={card.title}
-                    image={card.img}
-                    sx={{
-                      height: { sm: 'auto', md: cardData.indexOf(card) < 2 ? 'auto' : '50%' },
-                      aspectRatio: cardData.indexOf(card) < 2 ? '16 / 9' : '',
-                      borderBottom: '1px solid',
-                      borderColor: 'divider',
-                    }}
-                  />
-                )}
-                <SyledCardContent
+              {card.img && (
+                <CardMedia
+                  component="img"
+                  alt={card.title}
+                  image={card.img}
                   sx={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'space-between',
-                    height: card.img ? 'auto' : '100%',
+                    height: { sm: 'auto', md: cardData.indexOf(card) < 2 ? 'auto' : '50%' },
+                    aspectRatio: cardData.indexOf(card) < 2 ? '16 / 9' : '',
+                    borderBottom: '1px solid',
+                    borderColor: 'divider',
                   }}
-                >
-                  <div>
-                    <Typography gutterBottom variant="caption" component="div">
-                      {card.tag}
-                    </Typography>
-                    <Typography gutterBottom variant="h6" component="div">
-                      {card.title}
-                    </Typography>
-                    <StyledTypography
-                      variant="body2"
-                      color="text.secondary"
-                      gutterBottom
-                    >
-                      {card.description}
-                    </StyledTypography>
-                    <Button
-                      variant="outlined"
-                      size="small"
-                      component={Link}
-                      to={`/article/${card.id}`}
-                      sx={{ mt: 1 }}
-                      aria-label={`View full article: ${card.title}`}
-                    >
-                      View Full Article
-                    </Button>
-                  </div>
-                </SyledCardContent>
-                <Author authors={card.authors} />
-              </SyledCard>
-            </Grid>
-          ))
-        ) : (
-          <Grid item xs={12}>
-            <Typography variant="body1">No articles found for this filter.</Typography>
+                />
+              )}
+              <SyledCardContent
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'space-between',
+                  height: card.img ? 'auto' : '100%',
+                }}
+              >
+                <div>
+                  <Typography gutterBottom variant="caption" component="div">
+                    {card.tag}
+                  </Typography>
+                  <Typography gutterBottom variant="h6" component="div">
+                    {card.title}
+                  </Typography>
+                  <StyledTypography
+                    variant="body2"
+                    color="text.secondary"
+                    gutterBottom
+                  >
+                    {card.description}
+                  </StyledTypography>
+                  <Button
+                    variant="outlined"
+                    size="small"
+                    component={Link}
+                    to={`/article/${card.id}`}
+                    sx={{ mt: 1 }}
+                    aria-label={`View full article: ${card.title}`}
+                  >
+                    View Full Article
+                  </Button>
+                </div>
+              </SyledCardContent>
+              <Author authors={card.authors} />
+            </SyledCard>
           </Grid>
-        )}
+        ))}
       </Grid>
     </Box>
   );

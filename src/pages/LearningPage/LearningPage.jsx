@@ -2,10 +2,10 @@ import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
 import Container from '@mui/material/Container';
 import AppTheme from '../../shared-theme/AppTheme';
-import AppAppBar from '../../components/Learning/AppAppBar';
-import LearningContent from '../../components/Learning/LearningContent';
-import Latest from '../../components/Learning/Latest';
-import Footer from '../../components/Learning/Footer';
+import AppAppBar from '../../components/Paylocity/AppAppBar';
+import LearningContent from '../../components/Paylocity/PaylocityContent';
+import Latest from '../../components/Paylocity/Latest';
+import Footer from '../../components/Paylocity/Footer';
 import "bootstrap/dist/css/bootstrap.min.css"; 
 
 export default function LearningPage(props) {
