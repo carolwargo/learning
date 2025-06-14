@@ -45,7 +45,7 @@ const SyledCardContent = styled(CardContent)({
   padding: 16,
   flexGrow: 1,
   '&:last-child': {
-    paddingBottom: 16,
+    paddingBottom: 8,
   },
 });
 
@@ -66,7 +66,8 @@ function Author({ authors }) {
         gap: 2,
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '16px',
+        px: '16px',
+        pb: '16px',
       }}
     >
       <Box

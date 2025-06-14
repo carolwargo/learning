@@ -57,16 +57,6 @@ export default function PayArticleIndexPage() {
       </Button>
  <Box>
 
-      {article.img && (
-        <Box
-          component="img"
-          src={article.img}
-          alt={article.title}
-          sx={{ width: '100%', maxHeight: 400, objectFit: 'cover', mb: 2, mt:1 }}
-        />
-      )}
-
-
 
       <Typography variant="body2" color="text.secondary" sx={{ mb: 2 }}>
         By {article.authors.map((a) => a.name).join(', ')}

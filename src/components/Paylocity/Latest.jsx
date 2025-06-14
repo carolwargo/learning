@@ -12,6 +12,7 @@ import Divider from '@mui/material/Divider';
 import Rating from '@mui/material/Rating';
 import { styled } from '@mui/material/styles';
 import NavigateNextRoundedIcon from '@mui/icons-material/NavigateNextRounded';
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import Button from '@mui/material/Button';
 import InfoRoundedIcon from '@mui/icons-material/InfoRounded';
 import businessCardData from '../../data/businessCardData.jsx'; // Line 17: Default import
