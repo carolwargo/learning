@@ -9,13 +9,13 @@
 }
 
 .report-header {
-  border-bottom: 2px solid #003087; /* USO navy blue */
+  border-bottom: 2px solid #ff0008; /* USO navy blue */
   padding-bottom: 20px;
   margin-bottom: 30px;
 }
 
 .report-header h1 {
-  color: #003087;
+  color: #ff0008;
   font-size: 24px;
   margin-bottom: 10px;
 }
@@ -31,7 +31,7 @@
 
 .section-title {
   font-size: 20px;
-  color: #003087;
+  color: #ff0008;
   cursor: pointer;
   background-color: #e0e0e0;
   padding: 10px;
@@ -57,7 +57,7 @@
 
 .report-section h3 {
   font-size: 18px;
-  color: #003087;
+  color: #ff0008;
   margin-top: 15px;
 }
 
@@ -83,7 +83,7 @@
 }
 
 .comparison-table th {
-  background-color: #003087;
+  background-color: #ff0008;
   color: #fff;
 }
 
@@ -106,7 +106,7 @@
   text-align: center;
   margin-top: 40px;
   padding-top: 20px;
-  border-top: 2px solid #003087;
+  border-top: 2px solid #ff0008;
 }
 
 .report-footer p {

@@ -1,11 +1,11 @@
-// src/components/HumanResources/pay-articles/Article3.jsx
+// src/components/HumanResources/pay-articles/Article6.jsx
 import { Typography, Box, Paper, Link } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 // Import badge images (adjust paths based on your project structure)
 import appStoreBadge from '../../../assets/images/appStoreBadge.png'; // Official Apple badge
 import googlePlayBadge from '../../../assets/images/googlePlayBadge.png'; // Official Google badge
-import EmployeeHandout from '../../../assets/pdf/EmployeeHandout.pdf'; // Example PDF link
+
 // Custom styled component for the timeline marker
 const TimelineMarker = styled(Box)(({ theme }) => ({
   position: 'absolute',
@@ -37,14 +37,13 @@ const BadgeLink = styled(Link)(({ theme }) => ({
   '&:hover': {
     transform: 'scale(1.05)', // Subtle hover effect to simulate interaction
   },
-  // Ensure minimum height per Apple guidelines (200px onscreen)
   '& img': {
     height: '50px', // Adjust based on your design; ensure legibility
     width: 'auto',
   },
 }));
 
-export default function Article3() {
+export default function Article6() {
   return (
     <Box sx={{ maxWidth: 800, mx: 'auto', p: 3 }}>
       {/* Header with Badges */}
@@ -52,13 +51,13 @@ export default function Article3() {
         variant="h1"
         sx={{ my: 2, fontSize: '2.5rem', fontWeight: 'bold', color: 'text.primary' }}
       >
-       New Employees: Start Here!
+        Leverage AI with Paylocity for Hospitality HR Management
       </Typography>
       <Typography
         variant="body1"
         sx={{ fontSize: '1rem', color: 'text.secondary', mb: 2 }}
       >
-        Welcome Aboard! Things to know before you start.
+        As an HR manager for a hotel, spa, wedding venue, or restaurant, AI can streamline operations, boost employee engagement, and enhance decision-making. Paylocity’s AI tools offer practical solutions for hospitality’s unique challenges. Download the Paylocity app to manage HR tasks on the go:
       </Typography>
       <Box sx={{ mb: 3, display: 'flex', alignItems: 'center' }}>
         <BadgeLink
@@ -67,7 +66,7 @@ export default function Article3() {
           rel="noopener noreferrer"
           aria-label="Download Paylocity on the App Store"
         >
-          <img src={appStoreBadge} alt="Download on the App Store"  className='rounded shadow-lg'/>
+          <img src={appStoreBadge} alt="Download on the App Store" className='rounded shadow-lg'/>
         </BadgeLink>
         <BadgeLink
           href="https://play.google.com/store/apps/details?id=com.paylocity.paylocitymobile"
@@ -75,14 +74,14 @@ export default function Article3() {
           rel="noopener noreferrer"
           aria-label="Get Paylocity on Google Play"
         >
-          <img src={googlePlayBadge} alt="Get it on Google Play"  className='rounded shadow-lg'/>
+          <img src={googlePlayBadge} alt="Get it on Google Play" className='rounded shadow-lg'/>
         </BadgeLink>
       </Box>
       <Typography
         variant="body1"
         sx={{ fontSize: '1rem', color: 'text.secondary', mb: 5 }}
       >
-        Follow these steps to take control of your profile using the web portal or mobile app.
+        Explore these eight ways to leverage AI with Paylocity to optimize HR processes in hospitality.
       </Typography>
 
       {/* Timeline */}
@@ -100,107 +99,139 @@ export default function Article3() {
           }}
         />
 
-        {/* Step 1: Log In */}
+        {/* Step 1: Automate Recruitment and Hiring */}
         <TimelineStep>
           <TimelineMarker />
           <Typography
             variant="h3"
             sx={{ fontSize: '1.5rem', fontWeight: 'bold', mb: 1, color: 'primary.main' }}
           >
-            Step 1: Log into Paylocity
+            Automate Recruitment and Hiring
           </Typography>
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            On <strong>desktop</strong>, visit <Link>company’s Paylocity web portal</Link> and sign in with your credentials. On the <strong>mobile app</strong>, download the Paylocity app (iOS or Android), log in, and access the dashboard. If you need help, contact <Link>HR</Link> at anytime, or <Link>Paylocity support</Link> (7:00 AM–7:00 PM CST, Monday–Friday).
+            Use Paylocity’s AI-enabled recruiting workflows to automate job postings, screen candidates, and schedule interviews. In hospitality, AI matches resumes to roles like chefs or event coordinators, ideal for high-turnover restaurant or seasonal spa staff.{' '}
+            <Link href="/ai/recruitment-hiring" target="_blank" rel="noopener noreferrer">
+              Learn more about AI recruitment
+            </Link>.
           </Typography>
         </TimelineStep>
 
-        {/* Step 2: Update Personal Information */}
+        {/* Step 2: Streamline Onboarding with AI Workflows */}
         <TimelineStep>
           <TimelineMarker />
           <Typography
             variant="h3"
             sx={{ fontSize: '1.5rem', fontWeight: 'bold', mb: 1, color: 'primary.main' }}
           >
-            Step 2: Update Personal Information
+            Streamline Onboarding with AI Workflows
           </Typography>
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            Navigate to the <strong>Employee Self-Service</strong> section. On <strong>desktop</strong>, click “Employee Info” to edit your name, address, phone number, or email. On the <strong>mobile app</strong>, tap “Personal Info” to make changes. Save updates to keep your profile current.
+            Automate onboarding tasks like collecting tax forms or routing approvals with Paylocity’s HR workflows. For hotel, spa, or restaurant hires, employees can complete paperwork on mobile devices, perfect for peak wedding or tourism seasons.{' '}
+            <Link href="/ai/onboarding-workflows" target="_blank" rel="noopener noreferrer">
+              Explore AI onboarding
+            </Link>.
           </Typography>
         </TimelineStep>
 
-        {/* Step 3: Manage Tax Forms */}
+        {/* Step 3: Enhance Employee Engagement with AI Chatbots */}
         <TimelineStep>
           <TimelineMarker />
           <Typography
             variant="h3"
             sx={{ fontSize: '1.5rem', fontWeight: 'bold', mb: 1, color: 'primary.main' }}
           >
-            Step 3: Manage Tax Forms
-          </Typography>
-          <Typography variant="body1" sx={{ color: 'text.secondary', mb: 1 }}>
-            Go to the “Pay” section and select “Tax Exemptions.” On <strong>desktop</strong>, update your W-4 form to adjust federal/state tax withholdings. On the <strong>mobile app</strong>, tap “Taxes” to edit withholding details. Save and submit for HR approval.
+            Enhance Employee Engagement with AI Chatbots
           </Typography>
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            Download your W-2 or 1099 at year-end from the “Tax Forms” section on either platform.
+            Paylocity’s AI chatbots handle inquiries like pay stub access or time-off requests, while Employee Voice analyzes feedback. In hospitality, chatbots support servers or venue staff, addressing burnout concerns (80% in restaurants).{' '}
+            <Link href="/ai/employee-engagement" target="_blank" rel="noopener noreferrer">
+              Learn about AI chatbots
+            </Link>.
           </Typography>
         </TimelineStep>
 
-        {/* Step 4: Set Up or Update Direct Deposit */}
+        {/* Step 4: Optimize Workforce Scheduling */}
         <TimelineStep>
           <TimelineMarker />
           <Typography
             variant="h3"
             sx={{ fontSize: '1.5rem', fontWeight: 'bold', mb: 1, color: 'primary.main' }}
           >
-            Step 4: Set Up or Update Direct Deposit
+            Optimize Workforce Scheduling
           </Typography>
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            In the “Pay” section, select “Direct Deposit.” On <strong>desktop</strong>, enter or update your bank account and routing numbers. On the <strong>mobile app</strong>, tap “Payment Preferences” to add or edit accounts. Verify and save changes to ensure timely payments.
+            Paylocity’s AI scheduling tools manage shift swapping and align staffing with sales data. In hospitality, forecast needs for wedding weekends or busy restaurant nights, ensuring optimal coverage for spa therapists or banquet servers.{' '}
+            <Link href="/ai/workforce-scheduling" target="_blank" rel="noopener noreferrer">
+              Explore AI scheduling
+            </Link>.
           </Typography>
         </TimelineStep>
 
-        {/* Step 5: Enroll in or Update Benefits */}
+        {/* Step 5: Improve Performance Management and Training */}
         <TimelineStep>
           <TimelineMarker />
           <Typography
             variant="h3"
             sx={{ fontSize: '1.5rem', fontWeight: 'bold', mb: 1, color: 'primary.main' }}
           >
-            Step 5: Enroll in or Update Benefits
+            Improve Performance Management and Training
           </Typography>
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            During open enrollment or qualifying events, go to the “Benefits” section. On <strong>desktop</strong>, select health, dental, or other plans and confirm elections. On the <strong>mobile app</strong>, tap “Benefits” to review or update coverage. Submit changes for processing.
+            Paylocity’s AI analytics identify training gaps, and chatbots guide employees through modules. Train hotel staff on customer service or restaurant servers on upselling, enhancing guest satisfaction in high-churn roles.{' '}
+            <Link href="/ai/performance-training" target="_blank" rel="noopener noreferrer">
+              Learn about AI performance management
+            </Link>.
           </Typography>
         </TimelineStep>
 
-        {/* Step 6: Request Time Off */}
+        {/* Step 6: Ensure Compliance and Data Security */}
         <TimelineStep>
           <TimelineMarker />
           <Typography
             variant="h3"
             sx={{ fontSize: '1.5rem', fontWeight: 'bold', mb: 1, color: 'primary.main' }}
           >
-            Step 6: Request Time Off
+            Ensure Compliance and Data Security
           </Typography>
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            In the “Time & Labor” section, select “Request Time Off.” On <strong>desktop</strong>, choose vacation, sick, or other leave types and submit dates. On the <strong>mobile app</strong>, tap “Time Off” to submit requests and track balances. Monitor approval status in real-time.
+            Paylocity automates compliance for tipped employees and secures data with encryption. AI flags payroll or overtime issues, ensuring compliance with restaurant wage laws or spa safety standards.{' '}
+            <Link href="/ai/compliance-security" target="_blank" rel="noopener noreferrer">
+              Explore AI compliance tools
+            </Link>.
           </Typography>
         </TimelineStep>
 
-        {/* Step 7: View Pay Stubs and Request On-Demand Pay */}
+        {/* Step 7: Leverage Data-Driven Insights for Retention */}
         <TimelineStep>
           <TimelineMarker />
           <Typography
             variant="h3"
             sx={{ fontSize: '1.5rem', fontWeight: 'bold', mb: 1, color: 'primary.main' }}
           >
-            Step 7: View Pay Stubs and Request On-Demand Pay
-          </Typography>
-          <Typography variant="body1" sx={{ color: 'text.secondary', mb: 1 }}>
-            Access the “Pay” section to view pay stubs. On <strong>desktop</strong>, click “Pay History” to download or review earnings. On the <strong>mobile app</strong>, tap “Paychecks” for the same.
+            Leverage Data-Driven Insights for Retention
           </Typography>
           <Typography variant="body1" sx={{ color: 'text.secondary' }}>
-            If enabled, request early wage access via “On-Demand Pay” on either platform to receive earned wages before payday.
+            Paylocity’s AI analytics identify turnover patterns and tailor retention strategies, like flexible schedules for spa staff or rewards for engaged wedding venue employees, reducing recruitment costs.{' '}
+            <Link href="/ai/retention-insights" target="_blank" rel="noopener noreferrer">
+              Learn about AI retention strategies
+            </Link>.
+          </Typography>
+        </TimelineStep>
+
+        {/* Step 8: Support Multilingual Communication */}
+        <TimelineStep>
+          <TimelineMarker />
+          <Typography
+            variant="h3"
+            sx={{ fontSize: '1.5rem', fontWeight: 'bold', mb: 1, color: 'primary.main' }}
+          >
+            Support Multilingual Communication
+          </Typography>
+          <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+            Use AI chatbots alongside Paylocity to communicate in multiple languages with diverse hotel or spa staff, ensuring clear policy or schedule communication for international hires.{' '}
+            <Link href="/ai/multilingual-communication" target="_blank" rel="noopener noreferrer">
+              Explore multilingual AI tools
+            </Link>.
           </Typography>
         </TimelineStep>
       </Box>
@@ -214,25 +245,17 @@ export default function Article3() {
           Pro Tips
         </Typography>
         <Box component="ul" sx={{ pl: 2, color: 'text.secondary', fontSize: '1rem' }}>
-                 <Box component="li" sx={{ mb: 1 }}>
-        
-         Mobile app  <a
-          href={EmployeeHandout ? EmployeeHandout : '#'}
-          download
-          className="text-blue-500 hover:text-blue-700"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Download Paylocity on the App Store"
-         > PDF</a> provides quick access to your pay stubs, tax forms, and benefits information.
+          <Box component="li" sx={{ mb: 1 }}>
+            Start with Paylocity’s AI chatbots for routine HR tasks to test impact before scaling to scheduling or analytics.
           </Box>
           <Box component="li" sx={{ mb: 1 }}>
-            Use the mobile app for quick updates and notifications on the go.
+            Train staff on using Paylocity’s mobile app and chatbots to maximize adoption across hotel, spa, and restaurant teams.
           </Box>
           <Box component="li" sx={{ mb: 1 }}>
-            Regularly check your profile to ensure personal and tax information is up to date.
+            Integrate Paylocity with your property management system (PMS) or POS for seamless data flow in hospitality operations.
           </Box>
           <Box component="li">
-            Contact <Link>HR</Link> or <Link>Paylocity support</Link> (7:00 AM–7:00 PM CST, Monday–Friday) for help with complex changes.
+            Prioritize human interaction for sensitive issues like conflict resolution, using AI for repetitive tasks. Contact <Link href="/support/hr">HR</Link> or <Link href="https://www.paylocity.com/help/">Paylocity support</Link> (7:00 AM–7:00 PM CST, Monday–Friday) for assistance.
           </Box>
         </Box>
       </Box>

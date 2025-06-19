@@ -66,8 +66,7 @@ function Author({ authors }) {
         gap: 2,
         alignItems: 'center',
         justifyContent: 'space-between',
-        px: '16px',
-        pb: '16px',
+        pt:"16px"
       }}
     >
       <Box
@@ -150,7 +149,7 @@ export default function HumanResourcesContent() {
         <Typography variant="h1" gutterBottom
         color='#ff5722'
         sx={{ fontWeight: 'bold', mt: 5 }}>   
-        Paylocity <br />
+        Paylocity 
         Cheatsheet
         </Typography>
 </div>
@@ -277,73 +276,75 @@ export default function HumanResourcesContent() {
 
 
 
-
-      <Grid container spacing={2} columns={12}>
-        {filteredCards.map((card, index) => (
-          <Grid
+<Grid container spacing={2} columns={12}>
+  {filteredCards.map((card, index) => (
+    <Grid
       size={{ xs: 12, md: 6 }}
-            key={card.id}
-          >
-            <SyledCard
-              variant="outlined"
-              onFocus={() => handleFocus(index)}
-              onBlur={handleBlur}
-              tabIndex={0}
-              className={focusedCardIndex === index ? 'Mui-focused' : ''}
-              sx={{ height: '100%' }}
+      key={card.id}
+    >
+      <SyledCard
+        variant="outlined"
+        onFocus={() => handleFocus(index)}
+        onBlur={handleBlur}
+        tabIndex={0}
+        className={focusedCardIndex === index ? 'Mui-focused' : ''}
+        sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+      >
+        {card.img && (
+          <CardMedia
+            component="img"
+            alt={card.title}
+            image={card.img}
+            sx={{
+              aspectRatio: '16 / 9',
+              objectFit: 'cover',
+              width: '100%',
+              borderBottom: '1px solid',
+              borderColor: 'divider',
+            }}
+          />
+        )}
+
+        <SyledCardContent sx={{ flexGrow: 1 }}>
+          <div>
+            <Typography gutterBottom variant="caption" component="div">
+              {card.tag}
+            </Typography>
+            <Typography gutterBottom variant="h6" component="div">
+              {card.title}
+            </Typography>
+            <StyledTypography
+              variant="body2"
+              color="text.secondary"
+              gutterBottom
             >
-              {card.img && (
-                <CardMedia
-                  component="img"
-                  alt={card.title}
-                  image={card.img}
-                  sx={{
-                    height: { sm: 'auto', md: cardData.indexOf(card) < 2 ? 'auto' : '50%' },
-                    aspectRatio: cardData.indexOf(card) < 2 ? '16 / 9' : '',
-                    borderBottom: '1px solid',
-                    borderColor: 'divider',
-                  }}
-                />
-              )}
-              <SyledCardContent
-                sx={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'space-between',
-                  height: card.img ? 'auto' : '100%',
-                }}
-              >
-                <div>
-                  <Typography gutterBottom variant="caption" component="div">
-                    {card.tag}
-                  </Typography>
-                  <Typography gutterBottom variant="h6" component="div">
-                    {card.title}
-                  </Typography>
-                  <StyledTypography
-                    variant="body2"
-                    color="text.secondary"
-                    gutterBottom
-                  >
-                    {card.description}
-                  </StyledTypography>
-                  <Button
-                    variant="outlined"
-                    size="small"
-                    component={Link}
-                    to={`/paylocity/article/${card.id}`}
-                    sx={{ mt: 1 }}
-                    aria-label={`View full article: ${card.title}`}
-                  >
-                    View Full Article
-                  </Button>
-                </div>
-              </SyledCardContent>
-              <Author authors={card.authors} />
-            </SyledCard>
-          </Grid>
-        ))}
-      </Grid>
+              {card.description}
+            </StyledTypography>
+            <Button
+              variant="outlined"
+              size="small"
+              component={Link}
+              to={`/paylocity/article/${card.id}`}
+              sx={{ mt: 2,
+                boxShadow: '1px 1px 3px rgba(0, 0, 0, 0.2)',
+                '&:hover': {
+                  boxShadow: '2px 2px 4px rgba(0, 0, 0, 0.3)',
+                }
+               }}
+              aria-label={`View full article: ${card.title}`}
+            >
+              View Full Article
+            </Button>
+          </div>
+          <Box>   <Author authors={card.authors} /> </Box>
+        </SyledCardContent>
+
+     
+      </SyledCard>
+    </Grid>
+  ))}
+</Grid>
+
     </Box>
   );
 }
